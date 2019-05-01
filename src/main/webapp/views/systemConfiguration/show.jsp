@@ -49,7 +49,17 @@
 	<spring:message code="systemConfiguration.spamWords" var="spamWords" />
 	<li><b>${spamWords}:</b> <jstl:out value="${systemConfiguration.spamWords}" /></li>
 	
+	<spring:message code="systemConfiguration.fare" var="fare" />
+	<li><b>${fare}:</b> <jstl:out value="${systemConfiguration.fare}" /></li>
+	
+	<spring:message code="systemConfiguration.VATPercentage" var="VATPercentage" />
+	<li><b>${VATPercentage}:</b> <jstl:out value="${systemConfiguration.VATPercentage}" /></li>
+	
 </ul>
 
 <acme:button url="systemConfiguration/administrator/edit.do" code="button.edit" /><br /><br />
 <acme:button url="systemConfiguration/administrator/computeSpammer.do" code="button.computeSpammer" />
+<jstl:if test="${!systemConfiguration.isNotifiedRebrand}">
+	<acme:button url="systemConfiguration/administrator/notifyRebranding.do" code="button.notifyRebranding" />
+</jstl:if>
+<acme:button url="systemConfiguration/administrator/computeScore.do" code="button.computeScore" />

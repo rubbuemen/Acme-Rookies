@@ -60,6 +60,19 @@
 	<spring:message code="position.profile" var="profile" />
 	<display:column property="profile" title="${profile}" />
 	
+	<spring:message code="position.audits" var="audits" />
+	<display:column title="${audits}">
+		<acme:button url="audit/listGeneric.do?positionId=${row.id}" code="button.show" />
+	</display:column>
+	
+	<spring:message code="position.sponsorship" var="sponsorship" />
+	<display:column title="${sponsorship}" >
+		<jstl:if test="${randomSponsorship.containsKey(row)}">
+			<jstl:set var="banner" value="${randomSponsorship.get(row).banner}"/>
+			<img src="<jstl:out value='${banner}'/>" width="200px" height="100px" />
+		</jstl:if>
+	</display:column>
+	
 	<spring:message code="position.edit" var="editH" />
 	<display:column title="${editH}" >
 		<jstl:if test="${!row.isFinalMode}">

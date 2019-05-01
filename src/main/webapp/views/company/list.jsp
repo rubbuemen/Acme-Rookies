@@ -50,6 +50,9 @@
 	<spring:message code="company.commercialName" var="commercialName" />
 	<display:column property="commercialName" title="${commercialName}" />
 	
+	<spring:message code="company.score" var="score" />
+	<display:column property="score" title="${score}" />
+	
 	<spring:message code="company.positions" var="positions" />
 	<display:column title="${positions}">
 		<acme:button url="position/listGeneric.do?companyId=${row.id}" code="button.show" />

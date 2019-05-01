@@ -10,6 +10,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.PositionService;
+import services.SponsorshipService;
 import domain.Company;
 import domain.Position;
+import domain.Sponsorship;
 
 @Controller
 @RequestMapping("/position")
 public class PositionController extends AbstractController {
 
 	@Autowired
-	PositionService	positionService;
+	PositionService		positionService;
+
+	@Autowired
+	SponsorshipService	sponsorshipService;
 
 
 	@RequestMapping(value = "/listGeneric", method = RequestMethod.GET)
@@ -45,6 +51,16 @@ public class PositionController extends AbstractController {
 		}
 
 		result = new ModelAndView("position/listGeneric");
+
+		if (!positions.isEmpty()) {
+			final Map<Position, Sponsorship> randomSponsorship = new HashMap<>();
+			for (final Position p : positions) {
+				final Sponsorship sponsorship = this.sponsorshipService.findRandomSponsorship(p.getId());
+				if (sponsorship != null)
+					randomSponsorship.put(p, sponsorship);
+			}
+			result.addObject("randomSponsorship", randomSponsorship);
+		}
 
 		result.addObject("positions", positions);
 		result.addObject("mapPositionCompany", mapPositionCompany);
@@ -63,6 +79,17 @@ public class PositionController extends AbstractController {
 		mapPositionCompany = this.positionService.getMapPositionCompany(positions);
 
 		result = new ModelAndView("position/listGeneric");
+
+		if (!positions.isEmpty()) {
+			final Map<Position, Sponsorship> randomSponsorship = new HashMap<>();
+			for (final Position p : positions) {
+				final Sponsorship sponsorship = this.sponsorshipService.findRandomSponsorship(p.getId());
+				if (sponsorship != null)
+					randomSponsorship.put(p, sponsorship);
+			}
+			result.addObject("randomSponsorship", randomSponsorship);
+		}
+
 		result.addObject("positions", positions);
 		result.addObject("mapPositionCompany", mapPositionCompany);
 		result.addObject("requestURI", "position/listGeneric.do");

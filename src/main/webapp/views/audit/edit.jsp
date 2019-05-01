@@ -18,24 +18,23 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${actionURL}" modelAttribute="problem">
+<form:form action="${actionURL}" modelAttribute="audit">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<acme:textbox code="problem.title" path="title" placeholder="Lorem Ipsum"/>
-	<br />
-
-	<acme:textbox code="problem.statement" path="statement" placeholder="Lorem Ipsum"/>
+	<acme:textarea code="audit.text" path="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at auctor massa" />
 	<br />
 	
-	<acme:textbox code="problem.hint" path="hint" placeholder="Lorem Ipsum"/>
+	<acme:textbox code="audit.score" path="score" placeholder="N" type="number" min="0" max="10" />
 	<br />
 	
-	<acme:textarea code="problem.attachments" path="attachments" placeholder="http://Loremipsum.com, http://Loremipsum.com, ..." />
-	<br />
+	<jstl:if test="${audit.id == 0}">
+		<acme:select items="${positions}" itemLabel="ticker" code="audit.position" path="position"/>
+		<br />
+	</jstl:if>
 	
 	<jstl:choose>
-		<jstl:when test="${problem.id == 0}">
+		<jstl:when test="${audit.id == 0}">
 			<acme:submit name="save" code="button.register" />
 		</jstl:when>
 		<jstl:otherwise>
@@ -43,5 +42,5 @@
 		</jstl:otherwise>
 	</jstl:choose>
 	
-	<acme:cancel url="problem/company/list.do" code="button.cancel" />
+	<acme:cancel url="audit/auditor/list.do" code="button.cancel" />
 </form:form>

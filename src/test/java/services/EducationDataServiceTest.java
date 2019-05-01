@@ -39,7 +39,7 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "EducationData"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear de un "EducationData" correctamente
@@ -100,7 +100,7 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar un "EducationData"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar de un "EducationData" correctamente
@@ -168,7 +168,7 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "EducationData"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "EducationData" correctamente

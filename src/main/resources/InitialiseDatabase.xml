@@ -118,6 +118,9 @@
 				<value>ha sido seleccionado</value>
 			</list>
 		</property>
+		<property name="fare" value="49.99" />
+		<property name="VATPercentage" value="21.00" />
+		<property name="isNotifiedRebrand" value="false" />
 	</bean>	
 	
 </beans>

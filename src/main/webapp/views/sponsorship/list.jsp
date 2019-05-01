@@ -19,52 +19,43 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" class="displaytag" name="problems" requestURI="${requestURI}" id="row">
+<display:table pagesize="5" class="displaytag" name="sponsorships" requestURI="${requestURI}" id="row">
 
-	<spring:message code="problem.title" var="title" />
-	<display:column property="title" title="${title}" />
-	
-	<spring:message code="problem.statement" var="statement" />
-	<display:column property="statement" title="${statement}" />
-	
-	<spring:message code="problem.hint" var="hint" />
-	<display:column property="hint" title="${hint}" />
-	
-	<spring:message code="problem.attachments" var="attachments" />
-	<display:column title="${attachments}" >
-	<ul>
-	<jstl:forEach items="${row.attachments}" var="attachment">
-		<li><a href="<jstl:out value="${attachment}"/>"><jstl:out value="${attachment}"/></a></li>
-	</jstl:forEach>
-	</ul>
+	<spring:message code="sponsorship.creditCard" var="creditCard" />
+	<display:column title="${creditCard}">
+			<spring:message code="creditCard.holder" />: ${row.creditCard.holder}<br />
+			<spring:message code="creditCard.makeCreditCard" />: ${row.creditCard.makeCreditCard}<br />
+			<spring:message code="creditCard.number" />: ${row.creditCard.number}<br />
+			<spring:message code="creditCard.expirationMonth" />: ${row.creditCard.expirationMonth}<br />
+			<spring:message code="creditCard.expirationYear" />: ${row.creditCard.expirationYear}<br />
+			<spring:message code="creditCard.cvv" />: ${row.creditCard.cvv}
 	</display:column>
 	
-	<spring:message code="problem.edit" var="editH" />
+	<spring:message code="sponsorship.banner" var="banner" />
+	<display:column title="${banner}" >
+		<img src="<jstl:out value="${row.banner}"/>" width="300px" height="100px" />
+	</display:column>
+	
+	<spring:message code="sponsorship.targetPage" var="targetPage" />
+	<display:column title="${targetPage}" >
+		<a href="<jstl:out value="${row.targetPage}"/>">${row.targetPage}</a>
+	</display:column>
+	
+	<spring:message code="sponsorship.position" var="position" />
+		<display:column title="${position}">
+			<acme:button url="position/provider/show.do?positionId=${row.position.id}" code="button.show" />
+		</display:column>
+	
+	<spring:message code="sponsorship.edit" var="editH" />
 	<display:column title="${editH}" >
-		<jstl:if test="${!row.isFinalMode}">
-			<acme:button url="problem/company/edit.do?problemId=${row.id}" code="button.edit" />
-		</jstl:if>	
+		<acme:button url="sponsorship/provider/edit.do?sponsorshipId=${row.id}" code="button.edit" />
 	</display:column>
 	
-	<spring:message code="problem.delete" var="deleteH" />
+	<spring:message code="sponsorship.delete" var="deleteH" />
 	<display:column title="${deleteH}" >
-		<jstl:if test="${!row.isFinalMode}">
-			<acme:button url="problem/company/delete.do?problemId=${row.id}" code="button.delete" />
-		</jstl:if>	
-	</display:column>
-	
-	<spring:message code="problem.changeFinalMode" var="changeFinalModeH" />
-	<display:column title="${changeFinalModeH}" >
-		<jstl:choose>
-			<jstl:when test="${!row.isFinalMode}">
-				<acme:button url="problem/company/change.do?problemId=${row.id}" code="button.change" />
-			</jstl:when>
-			<jstl:when test="${row.isFinalMode}">
-				<spring:message code="problem.isFinalMode" />
-			</jstl:when>
-		</jstl:choose>
+		<acme:button url="sponsorship/provider/delete.do?sponsorshipId=${row.id}" code="button.delete" />
 	</display:column>
 			
 </display:table>
 
-<acme:button url="problem/company/create.do" code="button.create" />
+<acme:button url="sponsorship/provider/create.do" code="button.create" />

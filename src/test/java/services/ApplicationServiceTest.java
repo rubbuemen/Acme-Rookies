@@ -46,7 +46,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.3
+	 *         Requisito funcional: 9.3 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "Applications" logeado como "Company"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "Applications" correctamente logeado como "Company"
@@ -71,7 +71,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.3
+	 *         Requisito funcional: 9.3 (Acme-Hacker-Rank)
 	 *         Caso de uso: aceptar una "Application"
 	 *         Tests positivos: 1
 	 *         *** 1. Aceptar una "Application" correctamente
@@ -103,7 +103,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.3
+	 *         Requisito funcional: 9.3 (Acme-Hacker-Rank)
 	 *         Caso de uso: rechazar una "Application"
 	 *         Tests positivos: 1
 	 *         *** 1. Rechazar una "Application" correctamente
@@ -135,7 +135,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 10.1
+	 *         Requisito funcional: 10.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "Applications" logeado como "Rookie"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "Applications" correctamente logeado como "Rookie"
@@ -160,7 +160,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 10.1
+	 *         Requisito funcional: 10.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear una "Application"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear una "Application" correctamente
@@ -191,7 +191,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 10.1
+	 *         Requisito funcional: 10.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: resolver una "Application"
 	 *         Tests positivos: 1
 	 *         *** 1. Resolver una "Application" correctamente

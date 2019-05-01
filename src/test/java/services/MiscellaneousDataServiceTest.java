@@ -36,7 +36,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "MiscellaneousData"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear de un "MiscellaneousData" correctamente
@@ -64,7 +64,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar un "MiscellaneousData"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar de un "MiscellaneousData" correctamente
@@ -98,7 +98,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "MiscellaneousData"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "MiscellaneousData" correctamente

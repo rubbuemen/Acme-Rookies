@@ -24,11 +24,14 @@
 		<security:authorize access="isAnonymous()">
 		<li><a class="fNiv" href="position/listGeneric.do"><spring:message code="master.page.positionsAvailables" /></a></li>
 		<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.companies" /></a></li>
+		<li><a class="fNiv" href="item/listGeneric.do"><spring:message code="master.page.items" /></a></li>
+		<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.providers" /></a></li>
 			<li><a class="fNiv"><spring:message code="master.page.register" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="actor/register-company.do"><spring:message code="master.page.register.company" /></a></li>
 					<li><a href="actor/register-rookie.do"><spring:message code="master.page.register.rookie" /></a></li>
+					<li><a href="actor/register-provider.do"><spring:message code="master.page.register.provider" /></a></li>
 				</ul>
 			</li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
@@ -58,6 +61,27 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('AUDITOR')">
+			<li>
+				<a class="fNiv"><spring:message code="master.page.auditor" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="audit/auditor/list.do"><spring:message code="master.page.audits" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('PROVIDER')">
+			<li>
+				<a class="fNiv"><spring:message code="master.page.provider" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="item/provider/list.do"><spring:message code="master.page.items" /></a></li>
+					<li><a href="sponsorship/provider/list.do"><spring:message code="master.page.sponsorships" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
 		
 		<security:authorize access="hasRole('ADMIN')">
 			<li>
@@ -65,6 +89,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="actor/administrator/register-administrator.do"><spring:message code="master.page.register.admin" /></a></li>
+					<li><a href="actor/administrator/register-auditor.do"><spring:message code="master.page.register.auditor" /></a></li>
 					<li><a href="dashboard/administrator/show.do"><spring:message code="master.page.dashboard" /></a></li>	
 					<li><a href="systemConfiguration/administrator/show.do"><spring:message code="master.page.systemConfiguration" /></a></li>	
 					<li><a href="systemConfiguration/administrator/actorsList.do"><spring:message code="master.page.actorsList" /></a></li>
@@ -75,6 +100,8 @@
 		<security:authorize access="isAuthenticated()">
 		<li><a class="fNiv" href="position/listGeneric.do"><spring:message code="master.page.positionsAvailables" /></a></li>
 		<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.companies" /></a></li>
+		<li><a class="fNiv" href="item/listGeneric.do"><spring:message code="master.page.items" /></a></li>
+		<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.providers" /></a></li>
 		<li><a class="fNiv" href="socialProfile/list.do"><spring:message code="master.page.socialProfiles" /></a></li>
 		<li><a class="fNiv" href="message/list.do"><spring:message code="master.page.messages" /></a></li>
 			<li>
@@ -89,6 +116,12 @@
 					</security:authorize>
 					<security:authorize access="hasRole('ROOKIE')">
 						<li><a href="actor/rookie/edit.do"><spring:message code="master.page.edit.profile" /></a></li>
+					</security:authorize>
+					<security:authorize access="hasRole('AUDITOR')">
+						<li><a href="actor/auditor/edit.do"><spring:message code="master.page.edit.profile" /></a></li>
+					</security:authorize>
+					<security:authorize access="hasRole('PROVIDER')">
+						<li><a href="actor/provider/edit.do"><spring:message code="master.page.edit.profile" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('ADMIN')">
 						<li><a href="actor/administrator/edit.do"><spring:message code="master.page.edit.profile" /></a></li>

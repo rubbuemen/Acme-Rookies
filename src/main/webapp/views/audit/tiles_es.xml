@@ -24,6 +24,11 @@
 		<put-attribute name="title" value="Lista de auditorías" />
 		<put-attribute name="body" value="/views/audit/list.jsp" />
 	</definition>
+	
+	<definition name="audit/listGeneric" extends="master.page">
+		<put-attribute name="title" value="Lista de auditorías" />
+		<put-attribute name="body" value="/views/audit/listGeneric.jsp" />
+	</definition>
 
 
 </tiles-definitions>

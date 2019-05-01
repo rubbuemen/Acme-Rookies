@@ -76,6 +76,10 @@
 			<acme:textbox code="company.commercialName" path="actor.commercialName" placeholder="Lorem Ipsum" />
 			<br />
 		</jstl:if>
+		<jstl:if test="${authority == 'PROVIDER'}">
+			<acme:textbox code="provider.make" path="actor.make" placeholder="Lorem Ipsum" />
+			<br />
+		</jstl:if>
 	</fieldset>
 	
 	<fieldset>

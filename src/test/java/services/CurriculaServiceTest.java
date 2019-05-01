@@ -39,7 +39,7 @@ public class CurriculaServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "Curriculas" del "Rookie" logeado
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "Curriculas" del "Rookie" logeado correctamente
@@ -65,7 +65,7 @@ public class CurriculaServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "Curricula"
 	 *         Tests positivos: 1
 	 *         *** 1. Creación de un "Curricula" correctamente
@@ -112,7 +112,7 @@ public class CurriculaServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "Curricula"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "Curricula" correctamente

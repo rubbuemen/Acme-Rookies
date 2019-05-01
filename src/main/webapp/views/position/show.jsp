@@ -44,6 +44,10 @@
 	
 	<spring:message code="position.profile" var="profile" />
 	<li><b>${profile}:</b> <jstl:out value="${position.profile}" /></li>
+	
+	<spring:message code="position.audits" var="audits" />
+	<li><b>${audits}:</b> <acme:button url="audit/listGeneric.do?positionId=${position.id}" code="button.show" /></li>
+	
 </ul>
 
 <security:authorize access="hasRole('COMPANY')">	
@@ -52,4 +56,8 @@
 
 <security:authorize access="hasRole('ROOKIE')">	
 	<acme:button url="application/rookie/list.do" code="button.back" />
+</security:authorize>
+
+<security:authorize access="hasRole('AUDITOR')">	
+	<acme:button url="audit/auditor/list.do" code="button.back" />
 </security:authorize>

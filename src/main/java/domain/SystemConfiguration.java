@@ -37,6 +37,7 @@ public class SystemConfiguration extends DomainEntity {
 	private Collection<String>	spamWords;
 	private Double				fare;
 	private Double				VATPercentage;
+	private Boolean				isNotifiedRebrand;
 
 
 	// Getters and Setters
@@ -143,6 +144,15 @@ public class SystemConfiguration extends DomainEntity {
 
 	public void setVATPercentage(final Double VATPercentage) {
 		this.VATPercentage = VATPercentage;
+	}
+
+	@NotNull
+	public Boolean getIsNotifiedRebrand() {
+		return this.isNotifiedRebrand;
+	}
+
+	public void setIsNotifiedRebrand(final Boolean isNotifiedRebrand) {
+		this.isNotifiedRebrand = isNotifiedRebrand;
 	}
 
 }

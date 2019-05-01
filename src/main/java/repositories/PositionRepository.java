@@ -52,4 +52,7 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 	@Query("select p from Company c join c.positions p where p.isFinalMode = 1 and p.isCancelled = 0 and p.deadline > CURRENT_DATE and p.deadline <= ?1")
 	Collection<Position> findPositionsFilterByMaxDeadline(Date maxDeadline);
 
+	@Query("select distinct p from Auditor a join a.audits auds join auds.position p where a.id = ?1")
+	Collection<Position> findPositionsAuditedByAuditorId(int auditorId);
+
 }

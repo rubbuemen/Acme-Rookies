@@ -152,6 +152,48 @@ public class AdministratorSystemConfigurationController extends AbstractControll
 		return result;
 	}
 
+	@RequestMapping(value = "/notifyRebranding", method = RequestMethod.GET)
+	public ModelAndView notifyRebranding() {
+		ModelAndView result;
+
+		SystemConfiguration systemConfiguration;
+		systemConfiguration = this.systemConfigurationService.getConfiguration();
+
+		try {
+			this.systemConfigurationService.notifyRebranding();
+			result = new ModelAndView("systemConfiguration/show");
+			result.addObject("systemConfiguration", systemConfiguration);
+			result.addObject("message", "successful.action");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("systemConfiguration/show");
+			result.addObject("systemConfiguration", systemConfiguration);
+			result.addObject("message", "commit.error");
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/computeScore", method = RequestMethod.GET)
+	public ModelAndView computeScore() {
+		ModelAndView result;
+
+		SystemConfiguration systemConfiguration;
+		systemConfiguration = this.systemConfigurationService.getConfiguration();
+
+		try {
+			this.systemConfigurationService.computeScore();
+			result = new ModelAndView("systemConfiguration/show");
+			result.addObject("systemConfiguration", systemConfiguration);
+			result.addObject("message", "successful.action");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("systemConfiguration/show");
+			result.addObject("systemConfiguration", systemConfiguration);
+			result.addObject("message", "commit.error");
+		}
+
+		return result;
+	}
+
 	// Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final SystemConfiguration systemConfiguration) {

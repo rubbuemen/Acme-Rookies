@@ -35,7 +35,7 @@ public class CompanyServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 7.1
+	 *         Requisito funcional: 7.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: registrarse como "Company" en el sistema
 	 *         Tests positivos: 1
 	 *         *** 1. Registrarse como "Company" correctamente
@@ -157,7 +157,7 @@ public class CompanyServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 8.2
+	 *         Requisito funcional: 8.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar sus datos estando logeado
 	 *         Tests positivos: 1
 	 *         *** 1. Editar sus datos correctamente
@@ -245,7 +245,7 @@ public class CompanyServiceTest extends AbstractTest {
 	}
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 7.2
+	 *         Requisito funcional: 7.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar las "Positions" disponibles sin estar logeado y navegar hacia su "Company"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar las "Positions" disponibles sin estar logeado y navegar hacia su "Company"

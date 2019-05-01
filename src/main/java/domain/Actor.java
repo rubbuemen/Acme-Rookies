@@ -43,7 +43,6 @@ public abstract class Actor extends DomainEntity {
 	private String		phoneNumber;
 	private String		address;
 	private Boolean		isSpammer;
-	private Boolean		isNotifiedRebrand;
 
 
 	// Getters and Setters
@@ -130,14 +129,6 @@ public abstract class Actor extends DomainEntity {
 
 	public void setIsSpammer(final Boolean isSpammer) {
 		this.isSpammer = isSpammer;
-	}
-
-	public Boolean getIsNotifiedRebrand() {
-		return this.isNotifiedRebrand;
-	}
-
-	public void setIsNotifiedRebrand(final Boolean isNotifiedRebrand) {
-		this.isNotifiedRebrand = isNotifiedRebrand;
 	}
 
 

@@ -46,7 +46,7 @@
 <details>
 <summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryC3"/></summary>
 
-<display:table class="displaytag" name="queryC3" id="row">
+<display:table class="displaytag" name="queryC3" id="row1">
 	<spring:message code="actor.name" var="name" />
 	<display:column property="name" title="${name}" />
 
@@ -58,7 +58,7 @@
 
 	<spring:message code="actor.photo" var="photo" />
 	<display:column title="${photo}" >
-		<img src="<jstl:out value="${row.photo}"/>" width="200px" height="200px" />
+		<img src="<jstl:out value="${row1.photo}"/>" width="200px" height="200px" />
 	</display:column>
 
 	<spring:message code="actor.email" var="email" />
@@ -79,7 +79,7 @@
 <details>
 <summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryC4"/></summary>
 
-<display:table class="displaytag" name="queryC4" id="row">
+<display:table class="displaytag" name="queryC4" id="row2">
 	<spring:message code="actor.name" var="name" />
 	<display:column property="name" title="${name}" />
 
@@ -91,7 +91,7 @@
 
 	<spring:message code="actor.photo" var="photo" />
 	<display:column title="${photo}" >
-		<img src="<jstl:out value="${row.photo}"/>" width="200px" height="200px" />
+		<img src="<jstl:out value="${row2.photo}"/>" width="200px" height="200px" />
 	</display:column>
 
 	<spring:message code="actor.email" var="email" />
@@ -122,7 +122,7 @@
 <summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryC6"/></summary>
 
 <h3><spring:message code="dashboard.queryC6.bestPosition"/></h3>
-<display:table class="displaytag" name="queryC6_1" id="row">
+<display:table class="displaytag" name="queryC6_1" id="row3">
 	<spring:message code="position.ticker" var="ticker" />
 	<display:column property="ticker" title="${ticker}" />
 	
@@ -164,7 +164,7 @@
 </display:table>
 
 <h3><spring:message code="dashboard.queryC6.worstPosition"/></h3>
-<display:table class="displaytag" name="queryC6_2" id="row">
+<display:table class="displaytag" name="queryC6_2" id="row4">
 	<spring:message code="position.ticker" var="ticker" />
 	<display:column property="ticker" title="${ticker}" />
 	
@@ -238,5 +238,173 @@
 <ul>
 <li><b><spring:message code="dashboard.ratio"/>:</b> <jstl:out value="${ratioQueryB3 == \"null\" ? 0 : ratioQueryB3}"></jstl:out></li>
 </ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesC1"/></summary>
+
+<ul>
+<li><b><spring:message code="dashboard.avg"/>:</b> <jstl:out value="${avgQueryAcmeRookiesC1 == \"null\" ? 0 : avgQueryAcmeRookiesC1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.min"/>:</b> <jstl:out value="${minQueryAcmeRookiesC1 == \"null\" ? 0 : minQueryAcmeRookiesC1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.max"/>:</b> <jstl:out value="${maxQueryAcmeRookiesC1 == \"null\" ? 0 : maxQueryAcmeRookiesC1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.stddev"/>:</b> <jstl:out value="${stddevQueryAcmeRookiesC1 == \"null\" ? 0 : stddevQueryAcmeRookiesC1}"></jstl:out></li>
+</ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesC2"/></summary>
+
+<ul>
+<li><b><spring:message code="dashboard.avg"/>:</b> <jstl:out value="${avgQueryAcmeRookiesC2 == \"null\" ? 0 : avgQueryAcmeRookiesC2}"></jstl:out></li>
+<li><b><spring:message code="dashboard.min"/>:</b> <jstl:out value="${minQueryAcmeRookiesC2 == \"null\" ? 0 : minQueryAcmeRookiesC2}"></jstl:out></li>
+<li><b><spring:message code="dashboard.max"/>:</b> <jstl:out value="${maxQueryAcmeRookiesC2 == \"null\" ? 0 : maxQueryAcmeRookiesC2}"></jstl:out></li>
+<li><b><spring:message code="dashboard.stddev"/>:</b> <jstl:out value="${stddevQueryAcmeRookiesC2 == \"null\" ? 0 : stddevQueryAcmeRookiesC2}"></jstl:out></li>
+</ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesC3"/></summary>
+
+<display:table class="displaytag" name="queryAcmeRookiesC3" id="row5">
+	<spring:message code="actor.name" var="name" />
+	<display:column property="name" title="${name}" />
+
+	<spring:message code="actor.surnames" var="surnames" />
+	<display:column property="surnames" title="${surnames}" />
+
+	<spring:message code="actor.VATNumber" var="VATNumber" />
+	<display:column property="VATNumber" title="${VATNumber}" />
+
+	<spring:message code="actor.photo" var="photo" />
+	<display:column title="${photo}" >
+		<img src="<jstl:out value="${row5.photo}"/>" width="200px" height="200px" />
+	</display:column>
+
+	<spring:message code="actor.email" var="email" />
+	<display:column property="email" title="${email}" />
+
+	<spring:message code="actor.phoneNumber" var="phoneNumber" />
+	<display:column property="phoneNumber" title="${phoneNumber}" />
+
+	<spring:message code="actor.address" var="address" />
+	<display:column property="address" title="${address}" />
+	
+	<spring:message code="company.commercialName" var="commercialName" />
+	<display:column property="commercialName" title="${commercialName}" />
+</display:table>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesC4"/></summary>
+
+<ul>
+<li><b><spring:message code="dashboard.avg"/>:</b> <jstl:out value="${avgQueryAcmeRookiesC4 == \"null\" ? 0 : avgQueryAcmeRookiesC4}"></jstl:out></li>
+</ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesB1"/></summary>
+
+<ul>
+<li><b><spring:message code="dashboard.avg"/>:</b> <jstl:out value="${avgQueryAcmeRookiesB1 == \"null\" ? 0 : avgQueryAcmeRookiesB1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.min"/>:</b> <jstl:out value="${minQueryAcmeRookiesB1 == \"null\" ? 0 : minQueryAcmeRookiesB1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.max"/>:</b> <jstl:out value="${maxQueryAcmeRookiesB1 == \"null\" ? 0 : maxQueryAcmeRookiesB1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.stddev"/>:</b> <jstl:out value="${stddevQueryAcmeRookiesB1 == \"null\" ? 0 : stddevQueryAcmeRookiesB1}"></jstl:out></li>
+</ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesB2"/></summary>
+
+<display:table class="displaytag" name="queryAcmeRookiesB2" id="row6">
+	<spring:message code="actor.name" var="name" />
+	<display:column property="name" title="${name}" />
+
+	<spring:message code="actor.surnames" var="surnames" />
+	<display:column property="surnames" title="${surnames}" />
+
+	<spring:message code="actor.VATNumber" var="VATNumber" />
+	<display:column property="VATNumber" title="${VATNumber}" />
+
+	<spring:message code="actor.photo" var="photo" />
+	<display:column title="${photo}" >
+		<img src="<jstl:out value="${row6.photo}"/>" width="200px" height="200px" />
+	</display:column>
+
+	<spring:message code="actor.email" var="email" />
+	<display:column property="email" title="${email}" />
+
+	<spring:message code="actor.phoneNumber" var="phoneNumber" />
+	<display:column property="phoneNumber" title="${phoneNumber}" />
+
+	<spring:message code="actor.address" var="address" />
+	<display:column property="address" title="${address}" />
+	
+	<spring:message code="provider.make" var="make" />
+	<display:column property="make" title="${make}" />
+</display:table>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesA1"/></summary>
+
+<ul>
+<li><b><spring:message code="dashboard.avg"/>:</b> <jstl:out value="${avgQueryAcmeRookiesA1 == \"null\" ? 0 : avgQueryAcmeRookiesA1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.min"/>:</b> <jstl:out value="${minQueryAcmeRookiesA1 == \"null\" ? 0 : minQueryAcmeRookiesA1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.max"/>:</b> <jstl:out value="${maxQueryAcmeRookiesA1 == \"null\" ? 0 : maxQueryAcmeRookiesA1}"></jstl:out></li>
+<li><b><spring:message code="dashboard.stddev"/>:</b> <jstl:out value="${stddevQueryAcmeRookiesA1 == \"null\" ? 0 : stddevQueryAcmeRookiesA1}"></jstl:out></li>
+</ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesA2"/></summary>
+
+<ul>
+<li><b><spring:message code="dashboard.avg"/>:</b> <jstl:out value="${avgQueryAcmeRookiesA2 == \"null\" ? 0 : avgQueryAcmeRookiesA2}"></jstl:out></li>
+<li><b><spring:message code="dashboard.min"/>:</b> <jstl:out value="${minQueryAcmeRookiesA2 == \"null\" ? 0 : minQueryAcmeRookiesA2}"></jstl:out></li>
+<li><b><spring:message code="dashboard.max"/>:</b> <jstl:out value="${maxQueryAcmeRookiesA2 == \"null\" ? 0 : maxQueryAcmeRookiesA2}"></jstl:out></li>
+<li><b><spring:message code="dashboard.stddev"/>:</b> <jstl:out value="${stddevQueryAcmeRookiesA2 == \"null\" ? 0 : stddevQueryAcmeRookiesA2}"></jstl:out></li>
+</ul>
+
+</details><br/>
+
+<details>
+<summary style="font-size: 26px; cursor:pointer;"><spring:message code="dashboard.queryAcmeRookiesA3"/></summary>
+
+<display:table class="displaytag" name="queryAcmeRookiesA3" id="row7">
+	<spring:message code="actor.name" var="name" />
+	<display:column property="name" title="${name}" />
+
+	<spring:message code="actor.surnames" var="surnames" />
+	<display:column property="surnames" title="${surnames}" />
+
+	<spring:message code="actor.VATNumber" var="VATNumber" />
+	<display:column property="VATNumber" title="${VATNumber}" />
+
+	<spring:message code="actor.photo" var="photo" />
+	<display:column title="${photo}" >
+		<img src="<jstl:out value="${row7.photo}"/>" width="200px" height="200px" />
+	</display:column>
+
+	<spring:message code="actor.email" var="email" />
+	<display:column property="email" title="${email}" />
+
+	<spring:message code="actor.phoneNumber" var="phoneNumber" />
+	<display:column property="phoneNumber" title="${phoneNumber}" />
+
+	<spring:message code="actor.address" var="address" />
+	<display:column property="address" title="${address}" />
+	
+	<spring:message code="provider.make" var="make" />
+	<display:column property="make" title="${make}" />
+</display:table>
 
 </details><br/>

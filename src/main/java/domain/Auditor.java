@@ -6,7 +6,6 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
@@ -17,8 +16,7 @@ import cz.jirutka.validator.collection.constraints.EachNotNull;
 public class Auditor extends Actor {
 
 	// Relationships
-	private Collection<Audit>		audits;
-	private Collection<Position>	positions;
+	private Collection<Audit>	audits;
 
 
 	@Valid
@@ -30,17 +28,6 @@ public class Auditor extends Actor {
 
 	public void setAudits(final Collection<Audit> audits) {
 		this.audits = audits;
-	}
-
-	@Valid
-	@EachNotNull
-	@ManyToMany
-	public Collection<Position> getPositions() {
-		return this.positions;
-	}
-
-	public void setPositions(final Collection<Position> positions) {
-		this.positions = positions;
 	}
 
 }

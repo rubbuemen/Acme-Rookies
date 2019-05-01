@@ -10,6 +10,8 @@
 package controllers.company;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,19 +23,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.PositionService;
 import services.ProblemService;
+import services.SponsorshipService;
 import controllers.AbstractController;
 import domain.Position;
 import domain.Problem;
+import domain.Sponsorship;
 
 @Controller
 @RequestMapping("/position/company")
 public class CompanyPositionController extends AbstractController {
 
 	@Autowired
-	PositionService	positionService;
+	PositionService		positionService;
 
 	@Autowired
-	ProblemService	problemService;
+	ProblemService		problemService;
+
+	@Autowired
+	SponsorshipService	sponsorshipService;
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -44,6 +51,17 @@ public class CompanyPositionController extends AbstractController {
 		positions = this.positionService.findPositionsByCompanyLogged();
 
 		result = new ModelAndView("position/list");
+
+		if (positions != null)
+			if (!positions.isEmpty()) {
+				final Map<Position, Sponsorship> randomSponsorship = new HashMap<>();
+				for (final Position p : positions) {
+					final Sponsorship sponsorship = this.sponsorshipService.findRandomSponsorship(p.getId());
+					if (sponsorship != null)
+						randomSponsorship.put(p, sponsorship);
+				}
+				result.addObject("randomSponsorship", randomSponsorship);
+			}
 
 		result.addObject("positions", positions);
 		result.addObject("requestURI", "position/company/list.do");

@@ -18,30 +18,59 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${actionURL}" modelAttribute="problem">
+<form:form action="${actionURL}" modelAttribute="sponsorship">
+
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<acme:textbox code="problem.title" path="title" placeholder="Lorem Ipsum"/>
+	<fieldset>
+		<legend>
+			<spring:message code="sponsorship.creditCard" />
+		</legend>
+		<acme:textbox code="creditCard.holder" path="creditCard.holder" placeholder="Lorem Ipsum" />
+		<br />
+
+		<acme:textbox code="creditCard.makeCreditCard" path="creditCard.makeCreditCard"	placeholder="Lorem Ipsum" />
+		<br />
+		
+		<acme:textbox code="creditCard.number" path="creditCard.number"	placeholder="NNNNNNNNNNNNNNNN" />
+		<br />
+		
+		<acme:textbox code="creditCard.expirationMonth" path="creditCard.expirationMonth" placeholder="MM" type="number" min="1" max="12" />
+		<br />
+		
+		<acme:textbox code="creditCard.expirationYear" path="creditCard.expirationYear" placeholder="YY" type="number" min="0" max="99" />
+		<br />
+		
+		<acme:textbox code="creditCard.cvv" path="creditCard.cvv" placeholder="NNN" type="number" min="100" max="999" />
+		<br />
+	</fieldset>
 	<br />
 
-	<acme:textbox code="problem.statement" path="statement" placeholder="Lorem Ipsum"/>
+	<acme:textbox code="sponsorship.banner" path="banner" placeholder="http://LoremIpsum.com" type="url" />
+	<jstl:if test="${not empty sponsorship.banner}">
+		<br />
+		<img src="<jstl:out value='${sponsorship.banner}' />" />
+		<br />
+	</jstl:if>
 	<br />
 	
-	<acme:textbox code="problem.hint" path="hint" placeholder="Lorem Ipsum"/>
+	<acme:textbox code="sponsorship.targetPage" path="targetPage" placeholder="http://LoremIpsum.com" type="url" />
 	<br />
 	
-	<acme:textarea code="problem.attachments" path="attachments" placeholder="http://Loremipsum.com, http://Loremipsum.com, ..." />
-	<br />
-	
+	<jstl:if test="${sponsorship.id == 0}">
+		<acme:select items="${positions}" itemLabel="ticker" code="sponsorship.position" path="position"/>
+		<br />
+	</jstl:if>
+
 	<jstl:choose>
-		<jstl:when test="${problem.id == 0}">
+		<jstl:when test="${sponsorship.id == 0}">
 			<acme:submit name="save" code="button.register" />
 		</jstl:when>
 		<jstl:otherwise>
 			<acme:submit name="save" code="button.save" />
 		</jstl:otherwise>
 	</jstl:choose>
-	
-	<acme:cancel url="problem/company/list.do" code="button.cancel" />
+	<acme:cancel url="sponsorship/provider/list.do" code="button.cancel" />
+
 </form:form>

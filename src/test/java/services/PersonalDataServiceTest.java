@@ -32,7 +32,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.1
+	 *         Requisito funcional: 17.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar un "PersonalData"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar de un "PersonalData" correctamente

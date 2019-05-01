@@ -34,7 +34,7 @@ public class FinderServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 17.2
+	 *         Requisito funcional: 17.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: usar "Finder"
 	 *         Tests positivos: 1
 	 *         *** 1. Usar "Finder" correctamente

@@ -110,7 +110,7 @@
 	</bean>
 	<bean id="userAccount9" class="security.UserAccount">
 		<property name="username" value="rookie1" />
-		<property name="password" value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
+		<property name="password" value="9701eb1802a4c63f51e1501512fbdd30" />
 		<property name="statusAccount" value="true" />
 		<property name="authorities">
 			<list>
@@ -122,7 +122,7 @@
 	</bean>
 	<bean id="userAccount10" class="security.UserAccount">
 		<property name="username" value="rookie2" />
-		<property name="password" value="91af68b69a50a98dbc0800942540342c" />
+		<property name="password" value="124be4fa2a59341a1d7e965ac49b2923" />
 		<property name="statusAccount" value="true" />
 		<property name="authorities">
 			<list>
@@ -134,7 +134,7 @@
 	</bean>
 	<bean id="userAccount11" class="security.UserAccount">
 		<property name="username" value="rookie3" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="password" value="b723fa2fd1c2dc65d166df3e7f83e329" />
 		<property name="statusAccount" value="true" />
 		<property name="authorities">
 			<list>
@@ -146,7 +146,7 @@
 	</bean>
 	<bean id="userAccount12" class="security.UserAccount">
 		<property name="username" value="rookie4" />
-		<property name="password" value="a0ba178a7585a3b3575613351aa76ef7" />
+		<property name="password" value="78dfa0fab9872b58c8affee48f0c4252" />
 		<property name="statusAccount" value="true" />
 		<property name="authorities">
 			<list>
@@ -158,7 +158,7 @@
 	</bean>
 	<bean id="userAccount13" class="security.UserAccount">
 		<property name="username" value="rookie5" />
-		<property name="password" value="c788cf2e81a407a2d33ee178ed79de3e" />
+		<property name="password" value="71c3559edfab3474860637d46b7c39de" />
 		<property name="statusAccount" value="true" />
 		<property name="authorities">
 			<list>
@@ -524,13 +524,6 @@
 		<property name="phoneNumber" value="6748902435" />
 		<property name="address" value="41005 Sevilla" />
 		<property name="userAccount" ref="userAccount14" />
-		<property name="positions">
-			<list>
-				<ref bean="position1" />
-				<ref bean="position3" />
-				<ref bean="position4" />
-			</list>
-		</property>
 		<property name="audits">
 			<list>
 				<ref bean="audit1" />
@@ -547,11 +540,6 @@
 		<property name="phoneNumber" value="690247346" />
 		<property name="address" value="41005 Sevilla" />
 		<property name="userAccount" ref="userAccount15" />
-		<property name="positions">
-			<list>
-				<ref bean="position1" />
-			</list>
-		</property>
 		<property name="audits">
 			<list>
 				<ref bean="audit3" />
@@ -567,11 +555,6 @@
 		<property name="phoneNumber" value="613456809" />
 		<property name="address" value="41005 Sevilla" />
 		<property name="userAccount" ref="userAccount16" />
-		<property name="positions">
-			<list>
-				<ref bean="position4" />
-			</list>
-		</property>
 		<property name="audits">
 			<list>
 				<ref bean="audit4" />
@@ -587,12 +570,6 @@
 		<property name="phoneNumber" value="678925462" />
 		<property name="address" value="41005 Sevilla" />
 		<property name="userAccount" ref="userAccount17" />
-		<property name="positions">
-			<list>
-				<ref bean="position1" />
-				<ref bean="position4" />
-			</list>
-		</property>
 		<property name="audits">
 			<list>
 				<ref bean="audit5" />
@@ -653,6 +630,7 @@
 		<property name="surnames" value="Rovira Lorenzo" />
 		<property name="VATNumber" value="JS426" />
 		<property name="creditCard" ref="creditCard1" />
+		<property name="photo" value="http://oi63.tinypic.com/1vk35.jpg" />
 		<property name="email" value="jordrivelo@acmerookierank.com" />
 		<property name="phoneNumber" value="6748902435" />
 		<property name="address" value="41005 Sevilla" />
@@ -676,6 +654,7 @@
 		<property name="surnames" value="Cabrera Moreno" />
 		<property name="VATNumber" value="JD143" />
 		<property name="creditCard" ref="creditCard2" />
+		<property name="photo" value="http://oi67.tinypic.com/5aq104.jpg" />
 		<property name="email" value="omarcabrmo@acmerookierank.com" />
 		<property name="phoneNumber" value="6748902435" />
 		<property name="address" value="41005 Sevilla" />
@@ -697,6 +676,7 @@
 		<property name="surnames" value="Hidalgo Garrido" />
 		<property name="VATNumber" value="KJ352" />
 		<property name="creditCard" ref="creditCard3" />
+		<property name="photo" value="http://oi68.tinypic.com/s5l3ds.jpg" />
 		<property name="email" value="issahigarr@acmerookierank.com" />
 		<property name="phoneNumber" value="6748902435" />
 		<property name="address" value="41005 Sevilla" />
@@ -714,6 +694,7 @@
 		<property name="surnames" value="Serrano Ramos" />
 		<property name="VATNumber" value="FS356" />
 		<property name="creditCard" ref="creditCard2" />
+		<property name="photo" value="http://oi64.tinypic.com/2i6xja.jpg" />
 		<property name="email" value="rayaserra@acmerookierank.com" />
 		<property name="phoneNumber" value="6748902435" />
 		<property name="address" value="41005 Sevilla" />
@@ -725,6 +706,7 @@
 		<property name="surnames" value="Mas Castro" />
 		<property name="VATNumber" value="GH342" />
 		<property name="creditCard" ref="creditCard1" />
+		<property name="photo" value="http://oi63.tinypic.com/i2opcx.jpg" />
 		<property name="email" value="ivanmasca@acmerookierank.com" />
 		<property name="phoneNumber" value="6748902435" />
 		<property name="address" value="41005 Sevilla" />
@@ -1667,6 +1649,7 @@
 		</property>
 		<property name="fare" value="49.99" />
 		<property name="VATPercentage" value="21.00" />
+		<property name="isNotifiedRebrand" value="false" />
 	</bean>
 
 

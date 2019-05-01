@@ -16,11 +16,15 @@ import security.Authority;
 import security.UserAccount;
 import domain.Actor;
 import domain.Application;
+import domain.Audit;
+import domain.Auditor;
 import domain.Company;
 import domain.Curricula;
-import domain.Rookie;
 import domain.Position;
 import domain.Problem;
+import domain.Provider;
+import domain.Rookie;
+import domain.Sponsorship;
 import forms.CompanyForm;
 
 @Service
@@ -52,6 +56,18 @@ public class CompanyService {
 
 	@Autowired
 	private RookieService		rookieService;
+
+	@Autowired
+	private SponsorshipService	sponsorshipService;
+
+	@Autowired
+	private ProviderService		providerService;
+
+	@Autowired
+	private AuditService		auditService;
+
+	@Autowired
+	private AuditorService		auditorService;
 
 
 	// Simple CRUD methods
@@ -106,6 +122,16 @@ public class CompanyService {
 		return result;
 	}
 
+	public Company saveForComputes(final Company company) {
+		Assert.notNull(company);
+
+		Company result;
+
+		result = this.companyRepository.save(company);
+
+		return result;
+	}
+
 	public void delete(final Company company) {
 		Assert.notNull(company);
 		Assert.isTrue(company.getId() != 0);
@@ -122,6 +148,8 @@ public class CompanyService {
 		final Collection<Position> positions = new HashSet<>(companyLogged.getPositions());
 		for (final Position p : positions) {
 			final Collection<Application> applications = new HashSet<>(p.getApplications());
+			final Collection<Sponsorship> sponsorships = new HashSet<>(p.getSponsorships());
+			final Collection<Audit> audits = new HashSet<>(this.auditService.findAuditsFinalModeByPositionId(p.getId()));
 			for (final Application a : applications) {
 				final Rookie h = a.getRookie();
 				final Curricula c = a.getCurricula();
@@ -130,6 +158,19 @@ public class CompanyService {
 				this.applicationService.delete(a);
 				this.curriculaService.deleteAuxiliar(c);
 				this.rookieService.saveAuxiliar(h);
+			}
+			for (final Sponsorship s : sponsorships) {
+				final Provider pr = s.getProvider();
+				p.getSponsorships().remove(s);
+				pr.getSponsorships().remove(s);
+				this.sponsorshipService.deleteAuxiliar(s);
+				this.providerService.saveAuxiliar(pr);
+			}
+			for (final Audit a : audits) {
+				final Auditor aud = this.auditorService.findAuditorByAuditId(a.getId());
+				aud.getAudits().remove(a);
+				this.auditService.deleteAuxiliar(a);
+				this.auditorService.saveAuxiliar(aud);
 			}
 			this.positionService.deleteAuxiliar(p);
 		}
@@ -171,6 +212,14 @@ public class CompanyService {
 		Collection<Company> result;
 
 		result = this.companyRepository.findCompaniesByCurriculaId(curriculaId);
+
+		return result;
+	}
+
+	public Collection<Company> findCompaniesWithAudits() {
+		Collection<Company> result;
+
+		result = this.companyRepository.findCompaniesWithAudits();
 
 		return result;
 	}

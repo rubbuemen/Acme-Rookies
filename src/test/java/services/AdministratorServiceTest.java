@@ -34,7 +34,7 @@ public class AdministratorServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 11.1
+	 *         Requisito funcional: 11.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: registrar un "Administrator" en el sistema
 	 *         Tests positivos: 1
 	 *         *** 1. Registrar un "Administrator" correctamente
@@ -156,7 +156,7 @@ public class AdministratorServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 8.2
+	 *         Requisito funcional: 8.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar sus datos estando logeado
 	 *         Tests positivos: 1
 	 *         *** 1. Editar sus datos correctamente

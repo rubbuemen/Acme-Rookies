@@ -24,13 +24,18 @@ import org.springframework.web.servlet.ModelAndView;
 import security.Authority;
 import services.ActorService;
 import services.AdministratorService;
+import services.AuditorService;
 import services.CompanyService;
+import services.ProviderService;
 import services.RookieService;
 import services.UserAccountService;
 import domain.Actor;
+import domain.Auditor;
 import domain.Company;
+import domain.Provider;
 import domain.Rookie;
 import forms.CompanyForm;
+import forms.ProviderForm;
 import forms.RookieForm;
 
 @Controller
@@ -45,6 +50,12 @@ public class ActorController extends AbstractController {
 
 	@Autowired
 	RookieService			rookieService;
+
+	@Autowired
+	AuditorService			auditorService;
+
+	@Autowired
+	ProviderService			providerService;
 
 	@Autowired
 	AdministratorService	administratorService;
@@ -83,6 +94,24 @@ public class ActorController extends AbstractController {
 		result = new ModelAndView("actor/register");
 
 		result.addObject("actionURL", "actor/register-rookie.do");
+		result.addObject("actorForm", actorForm);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/register-provider", method = RequestMethod.GET)
+	public ModelAndView registerProvider() {
+		ModelAndView result;
+		Provider actor;
+
+		actor = this.providerService.create();
+
+		final ProviderForm actorForm = new ProviderForm(actor);
+
+		result = new ModelAndView("actor/register");
+
+		result.addObject("authority", Authority.PROVIDER);
+		result.addObject("actionURL", "actor/register-provider.do");
 		result.addObject("actorForm", actorForm);
 
 		return result;
@@ -156,6 +185,40 @@ public class ActorController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/register-provider", method = RequestMethod.POST, params = "save")
+	public ModelAndView registerProvider(@ModelAttribute("actorForm") ProviderForm actorForm, final BindingResult binding) {
+		ModelAndView result;
+
+		actorForm = this.providerService.reconstruct(actorForm, binding);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(actorForm.getActor());
+		else
+			try {
+				Assert.isTrue(actorForm.getActor().getUserAccount().getPassword().equals(actorForm.getPasswordCheck()), "Password does not match");
+				Assert.isTrue(actorForm.getTermsConditions(), "The terms and conditions must be accepted");
+				this.providerService.save(actorForm.getActor());
+				result = new ModelAndView("redirect:/welcome/index.do");
+			} catch (final Throwable oops) {
+				if (oops.getMessage().equals("Password does not match"))
+					result = this.createEditModelAndView(actorForm.getActor(), "actor.password.match");
+				else if (oops.getMessage().equals("The terms and conditions must be accepted"))
+					result = this.createEditModelAndView(actorForm.getActor(), "actor.conditions.accept");
+				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]" + "; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
+					result = this.createEditModelAndView(actorForm.getActor(), "actor.error.duplicate.user");
+				else if (oops.getMessage().equals("Invalid credit card"))
+					result = this.createEditModelAndView(actorForm.getActor(), "creditCard.error.invalid");
+				else if (oops.getMessage().equals("Expired credit card"))
+					result = this.createEditModelAndView(actorForm.getActor(), "creditCard.error.expired");
+				else if (oops.getMessage().equals("This entity does not exist"))
+					result = this.createEditModelAndView(null, "hacking.notExist.error");
+				else
+					result = this.createEditModelAndView(actorForm.getActor(), "commit.error");
+			}
+
+		return result;
+	}
+
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete() {
 		ModelAndView result;
@@ -167,6 +230,10 @@ public class ActorController extends AbstractController {
 				this.companyService.delete((Company) actor);
 			else if (actor instanceof Rookie)
 				this.rookieService.delete((Rookie) actor);
+			else if (actor instanceof Auditor)
+				this.auditorService.delete((Auditor) actor);
+			else if (actor instanceof Provider)
+				this.providerService.delete((Provider) actor);
 			result = new ModelAndView("redirect:/j_spring_security_logout");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(actor, "commit.error");
@@ -213,6 +280,8 @@ public class ActorController extends AbstractController {
 
 		if (actor instanceof Company)
 			result.addObject("authority", Authority.COMPANY);
+		if (actor instanceof Provider)
+			result.addObject("authority", Authority.PROVIDER);
 		result.addObject("actor", actor);
 		result.addObject("message", message);
 

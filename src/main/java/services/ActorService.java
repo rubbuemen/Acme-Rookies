@@ -17,6 +17,7 @@ import security.UserAccount;
 import domain.Actor;
 import domain.Company;
 import domain.CreditCard;
+import domain.Provider;
 
 @Service
 @Transactional
@@ -169,7 +170,21 @@ public class ActorService {
 		final Authority auth = new Authority();
 		auth.setAuthority(Authority.ADMIN);
 		final Collection<Authority> authorities = actor.getUserAccount().getAuthorities();
-		Assert.isTrue(authorities.contains(auth), "The logged actor is not a administrator");
+		Assert.isTrue(authorities.contains(auth), "The logged actor is not an administrator");
+	}
+
+	public void checkUserLoginAuditor(final Actor actor) {
+		final Authority auth = new Authority();
+		auth.setAuthority(Authority.AUDITOR);
+		final Collection<Authority> authorities = actor.getUserAccount().getAuthorities();
+		Assert.isTrue(authorities.contains(auth), "The logged actor is not an auditor");
+	}
+
+	public void checkUserLoginProvider(final Actor actor) {
+		final Authority auth = new Authority();
+		auth.setAuthority(Authority.PROVIDER);
+		final Collection<Authority> authorities = actor.getUserAccount().getAuthorities();
+		Assert.isTrue(authorities.contains(auth), "The logged actor is not a provider");
 	}
 
 	public boolean isNumeric(final String cadena) {
@@ -310,7 +325,12 @@ public class ActorService {
 			sb.append(';');
 			sb.append(((Company) actorLogged).getCommercialName());
 		}
+		if (actorLogged instanceof Provider) {
+			sb.append(';');
+			sb.append(((Provider) actorLogged).getMake());
+		}
 		sb.append('\n');
 		return sb;
 	}
+
 }

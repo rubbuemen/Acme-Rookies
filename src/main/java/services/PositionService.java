@@ -21,12 +21,14 @@ import org.springframework.validation.Validator;
 import repositories.PositionRepository;
 import domain.Actor;
 import domain.Application;
+import domain.Auditor;
 import domain.Company;
 import domain.Finder;
-import domain.Rookie;
 import domain.Message;
 import domain.Position;
 import domain.Problem;
+import domain.Provider;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -54,6 +56,12 @@ public class PositionService {
 
 	@Autowired
 	private RookieService		rookieService;
+
+	@Autowired
+	private AuditorService		auditorService;
+
+	@Autowired
+	private ProviderService		providerService;
 
 
 	// Simple CRUD methods
@@ -410,6 +418,42 @@ public class PositionService {
 		return result;
 	}
 
+	public Position findPositionProviderLogged(final int positionId) {
+		Assert.isTrue(positionId != 0);
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginProvider(actorLogged);
+
+		final Collection<Provider> providersOwner = this.providerService.findProvidersByPositionId(positionId);
+		Assert.isTrue(providersOwner.contains(actorLogged), "The logged actor is not the owner of this entity");
+
+		Position result;
+
+		result = this.positionRepository.findOne(positionId);
+		Assert.notNull(result);
+
+		return result;
+	}
+
+	public Position findPositionAuditorLogged(final int positionId) {
+		Assert.isTrue(positionId != 0);
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAuditor(actorLogged);
+
+		final Collection<Auditor> auditorsOwner = this.auditorService.findAuditorsByPositionId(positionId);
+		Assert.isTrue(auditorsOwner.contains(actorLogged), "The logged actor is not the owner of this entity");
+
+		Position result;
+
+		result = this.positionRepository.findOne(positionId);
+		Assert.notNull(result);
+
+		return result;
+	}
+
 	public Collection<Position> findPositionsToSelectApplication() {
 		Collection<Position> result;
 
@@ -455,6 +499,20 @@ public class PositionService {
 			result.retainAll(findPositionsFilterByMinSalary);
 		if (cal.get(Calendar.YEAR) != 3000)
 			result.retainAll(findPositionsFilterByMaxDeadline);
+
+		return result;
+	}
+
+	public Collection<Position> findPositionsToAudit() {
+		Collection<Position> result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAuditor(actorLogged);
+
+		result = this.findPositionsFinalModeNotCancelledNotDeadline();
+		final Collection<Position> positionsToRemove = this.positionRepository.findPositionsAuditedByAuditorId(actorLogged.getId());
+		result.removeAll(positionsToRemove);
 
 		return result;
 	}

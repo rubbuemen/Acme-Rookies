@@ -1,7 +1,9 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,9 @@ import security.UserAccount;
 import domain.Actor;
 import domain.Administrator;
 import domain.Company;
-import domain.Rookie;
 import domain.Position;
+import domain.Provider;
+import domain.Rookie;
 import forms.AdministratorForm;
 
 @Service
@@ -219,6 +222,119 @@ public class AdministratorService {
 		this.actorService.checkUserLoginAdministrator(actorLogged);
 
 		result = this.administratorRepository.dashboardQueryB3();
+
+		return result;
+	}
+
+	public String dashboardQueryAcmeRookiesC1() {
+		String result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesC1();
+
+		return result;
+	}
+
+	public String dashboardQueryAcmeRookiesC2() {
+		String result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesC2();
+
+		return result;
+	}
+
+	public Collection<Company> dashboardQueryAcmeRookiesC3() {
+		Collection<Company> result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesC3();
+
+		return result;
+	}
+
+	public String dashboardQueryAcmeRookiesC4() {
+		String result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesC4();
+
+		return result;
+	}
+
+	public String dashboardQueryAcmeRookiesB1() {
+		String result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesB1();
+
+		return result;
+	}
+
+	public Collection<Provider> dashboardQueryAcmeRookiesB2() {
+		Collection<Provider> result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesB2();
+
+		final List<Provider> resultList = new ArrayList<>(result);
+
+		if (resultList.size() > 5)
+			result = resultList.subList(0, 5);
+
+		return result;
+	}
+
+	public String dashboardQueryAcmeRookiesA1() {
+		String result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesA1();
+
+		return result;
+	}
+
+	public String dashboardQueryAcmeRookiesA2() {
+		String result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesA2();
+
+		return result;
+	}
+
+	public Collection<Provider> dashboardQueryAcmeRookiesA3() {
+		Collection<Provider> result;
+
+		final Actor actorLogged = this.actorService.findActorLogged();
+		Assert.notNull(actorLogged);
+		this.actorService.checkUserLoginAdministrator(actorLogged);
+
+		result = this.administratorRepository.dashboardQueryAcmeRookiesA3();
 
 		return result;
 	}

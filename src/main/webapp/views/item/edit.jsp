@@ -18,24 +18,28 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${actionURL}" modelAttribute="problem">
+<form:form action="${actionURL}" modelAttribute="item">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<acme:textbox code="problem.title" path="title" placeholder="Lorem Ipsum"/>
+	<acme:textbox code="item.name" path="name" placeholder="Lorem Ipsum"/>
 	<br />
 
-	<acme:textbox code="problem.statement" path="statement" placeholder="Lorem Ipsum"/>
+	<acme:textarea code="item.description" path="description" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at auctor massa" />
 	<br />
 	
-	<acme:textbox code="problem.hint" path="hint" placeholder="Lorem Ipsum"/>
+	<acme:textbox code="item.link" path="link" placeholder="http://LoremIpsum.com" type="url" />
 	<br />
 	
-	<acme:textarea code="problem.attachments" path="attachments" placeholder="http://Loremipsum.com, http://Loremipsum.com, ..." />
+	<acme:textbox code="item.picture" path="picture" placeholder="http://LoremIpsum.com" type="url" />
 	<br />
+	<jstl:if test="${not empty picture}">
+		<img src="<jstl:out value='${picture}' />" />
+		<br /><br />
+	</jstl:if>
 	
 	<jstl:choose>
-		<jstl:when test="${problem.id == 0}">
+		<jstl:when test="${item.id == 0}">
 			<acme:submit name="save" code="button.register" />
 		</jstl:when>
 		<jstl:otherwise>
@@ -43,5 +47,5 @@
 		</jstl:otherwise>
 	</jstl:choose>
 	
-	<acme:cancel url="problem/company/list.do" code="button.cancel" />
+	<acme:cancel url="item/provider/list.do" code="button.cancel" />
 </form:form>

@@ -20,8 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
 import controllers.AbstractController;
 import domain.Company;
-import domain.Rookie;
 import domain.Position;
+import domain.Provider;
+import domain.Rookie;
 
 @Controller
 @RequestMapping("/dashboard/administrator")
@@ -110,6 +111,77 @@ public class AdministratorDashboardController extends AbstractController {
 		//Query B3
 		final String ratioQueryB3 = this.administratorService.dashboardQueryB3();
 		result.addObject("ratioQueryB3", ratioQueryB3);
+
+		//Query C1 (Acme-Rookies)
+		final String[] queryAcmeRookiesC1 = this.administratorService.dashboardQueryAcmeRookiesC1().split(",");
+		final String avgQueryAcmeRookiesC1 = queryAcmeRookiesC1[0];
+		final String minQueryAcmeRookiesC1 = queryAcmeRookiesC1[1];
+		final String maxQueryAcmeRookiesC1 = queryAcmeRookiesC1[2];
+		final String stddevQueryAcmeRookiesC1 = queryAcmeRookiesC1[3];
+		result.addObject("avgQueryAcmeRookiesC1", avgQueryAcmeRookiesC1);
+		result.addObject("minQueryAcmeRookiesC1", minQueryAcmeRookiesC1);
+		result.addObject("maxQueryAcmeRookiesC1", maxQueryAcmeRookiesC1);
+		result.addObject("stddevQueryAcmeRookiesC1", stddevQueryAcmeRookiesC1);
+
+		//Query C2 (Acme-Rookies)
+		final String[] queryAcmeRookiesC2 = this.administratorService.dashboardQueryAcmeRookiesC2().split(",");
+		final String avgQueryAcmeRookiesC2 = queryAcmeRookiesC2[0];
+		final String minQueryAcmeRookiesC2 = queryAcmeRookiesC2[1];
+		final String maxQueryAcmeRookiesC2 = queryAcmeRookiesC2[2];
+		final String stddevQueryAcmeRookiesC2 = queryAcmeRookiesC2[3];
+		result.addObject("avgQueryAcmeRookiesC2", avgQueryAcmeRookiesC2);
+		result.addObject("minQueryAcmeRookiesC2", minQueryAcmeRookiesC2);
+		result.addObject("maxQueryAcmeRookiesC2", maxQueryAcmeRookiesC2);
+		result.addObject("stddevQueryAcmeRookiesC2", stddevQueryAcmeRookiesC2);
+
+		//Query C3 (Acme-Rookies)
+		final Collection<Company> queryAcmeRookiesC3 = this.administratorService.dashboardQueryAcmeRookiesC3();
+		result.addObject("queryAcmeRookiesC3", queryAcmeRookiesC3);
+
+		//Query C4 (Acme-Rookies)
+		final String avgQueryAcmeRookiesC4 = this.administratorService.dashboardQueryAcmeRookiesC4();
+		result.addObject("avgQueryAcmeRookiesC4", avgQueryAcmeRookiesC4);
+
+		//Query B1 (Acme-Rookies)
+		final String[] queryAcmeRookiesB1 = this.administratorService.dashboardQueryAcmeRookiesB1().split(",");
+		final String avgQueryAcmeRookiesB1 = queryAcmeRookiesB1[0];
+		final String minQueryAcmeRookiesB1 = queryAcmeRookiesB1[1];
+		final String maxQueryAcmeRookiesB1 = queryAcmeRookiesB1[2];
+		final String stddevQueryAcmeRookiesB1 = queryAcmeRookiesB1[3];
+		result.addObject("avgQueryAcmeRookiesB1", avgQueryAcmeRookiesB1);
+		result.addObject("minQueryAcmeRookiesB1", minQueryAcmeRookiesB1);
+		result.addObject("maxQueryAcmeRookiesB1", maxQueryAcmeRookiesB1);
+		result.addObject("stddevQueryAcmeRookiesB1", stddevQueryAcmeRookiesB1);
+
+		//Query B2 (Acme-Rookies)
+		final Collection<Provider> queryAcmeRookiesB2 = this.administratorService.dashboardQueryAcmeRookiesB2();
+		result.addObject("queryAcmeRookiesB2", queryAcmeRookiesB2);
+
+		//Query A1 (Acme-Rookies)
+		final String[] queryAcmeRookiesA1 = this.administratorService.dashboardQueryAcmeRookiesA1().split(",");
+		final String avgQueryAcmeRookiesA1 = queryAcmeRookiesA1[0];
+		final String minQueryAcmeRookiesA1 = queryAcmeRookiesA1[1];
+		final String maxQueryAcmeRookiesA1 = queryAcmeRookiesA1[2];
+		final String stddevQueryAcmeRookiesA1 = queryAcmeRookiesA1[3];
+		result.addObject("avgQueryAcmeRookiesA1", avgQueryAcmeRookiesA1);
+		result.addObject("minQueryAcmeRookiesA1", minQueryAcmeRookiesA1);
+		result.addObject("maxQueryAcmeRookiesA1", maxQueryAcmeRookiesA1);
+		result.addObject("stddevQueryAcmeRookiesA1", stddevQueryAcmeRookiesA1);
+
+		//Query A2 (Acme-Rookies)
+		final String[] queryAcmeRookiesA2 = this.administratorService.dashboardQueryAcmeRookiesA2().split(",");
+		final String avgQueryAcmeRookiesA2 = queryAcmeRookiesA2[0];
+		final String minQueryAcmeRookiesA2 = queryAcmeRookiesA2[1];
+		final String maxQueryAcmeRookiesA2 = queryAcmeRookiesA2[2];
+		final String stddevQueryAcmeRookiesA2 = queryAcmeRookiesA2[3];
+		result.addObject("avgQueryAcmeRookiesA2", avgQueryAcmeRookiesA2);
+		result.addObject("minQueryAcmeRookiesA2", minQueryAcmeRookiesA2);
+		result.addObject("maxQueryAcmeRookiesA2", maxQueryAcmeRookiesA2);
+		result.addObject("stddevQueryAcmeRookiesA2", stddevQueryAcmeRookiesA2);
+
+		//Query A3 (Acme-Rookies)
+		final Collection<Provider> queryAcmeRookiesA3 = this.administratorService.dashboardQueryAcmeRookiesA3();
+		result.addObject("queryAcmeRookiesA3", queryAcmeRookiesA3);
 
 		return result;
 	}

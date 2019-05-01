@@ -19,52 +19,51 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" class="displaytag" name="problems" requestURI="${requestURI}" id="row">
+<display:table pagesize="5" class="displaytag" name="audits" requestURI="${requestURI}" id="row">
 
-	<spring:message code="problem.title" var="title" />
-	<display:column property="title" title="${title}" />
-	
-	<spring:message code="problem.statement" var="statement" />
-	<display:column property="statement" title="${statement}" />
-	
-	<spring:message code="problem.hint" var="hint" />
-	<display:column property="hint" title="${hint}" />
-	
-	<spring:message code="problem.attachments" var="attachments" />
-	<display:column title="${attachments}" >
-	<ul>
-	<jstl:forEach items="${row.attachments}" var="attachment">
-		<li><a href="<jstl:out value="${attachment}"/>"><jstl:out value="${attachment}"/></a></li>
-	</jstl:forEach>
-	</ul>
+	<spring:message code="audit.moment" var="moment" />
+	<display:column title="${moment}">
+			<fmt:formatDate var="format" value="${row.moment}" pattern="dd/MM/YYYY HH:mm" />
+			<jstl:out value="${format}" />
 	</display:column>
 	
-	<spring:message code="problem.edit" var="editH" />
+	<spring:message code="audit.text" var="text" />
+	<display:column property="text" title="${text}" />
+	
+	<spring:message code="audit.score" var="score" />
+	<display:column property="score" title="${score}" />
+	
+	<spring:message code="audit.position" var="position" />
+	<display:column title="${position}">
+		<acme:button url="position/auditor/show.do?positionId=${row.position.id}" code="button.show" />
+	</display:column>
+		
+	<spring:message code="audit.edit" var="editH" />
 	<display:column title="${editH}" >
 		<jstl:if test="${!row.isFinalMode}">
-			<acme:button url="problem/company/edit.do?problemId=${row.id}" code="button.edit" />
+			<acme:button url="audit/auditor/edit.do?auditId=${row.id}" code="button.edit" />
 		</jstl:if>	
 	</display:column>
 	
-	<spring:message code="problem.delete" var="deleteH" />
+	<spring:message code="audit.delete" var="deleteH" />
 	<display:column title="${deleteH}" >
 		<jstl:if test="${!row.isFinalMode}">
-			<acme:button url="problem/company/delete.do?problemId=${row.id}" code="button.delete" />
+			<acme:button url="audit/auditor/delete.do?auditId=${row.id}" code="button.delete" />
 		</jstl:if>	
 	</display:column>
 	
-	<spring:message code="problem.changeFinalMode" var="changeFinalModeH" />
+	<spring:message code="audit.changeFinalMode" var="changeFinalModeH" />
 	<display:column title="${changeFinalModeH}" >
 		<jstl:choose>
 			<jstl:when test="${!row.isFinalMode}">
-				<acme:button url="problem/company/change.do?problemId=${row.id}" code="button.change" />
+				<acme:button url="audit/auditor/change.do?auditId=${row.id}" code="button.change" />
 			</jstl:when>
 			<jstl:when test="${row.isFinalMode}">
-				<spring:message code="problem.isFinalMode" />
+				<spring:message code="audit.isFinalMode" />
 			</jstl:when>
 		</jstl:choose>
 	</display:column>
 			
 </display:table>
 
-<acme:button url="problem/company/create.do" code="button.create" />
+<acme:button url="audit/auditor/create.do" code="button.create" />

@@ -50,6 +50,23 @@
 	<jstl:if test="${authority == 'COMPANY'}">
 		<spring:message code="company.commercialName" var="commercialName" />
 		<li><b>${commercialName}:</b> <jstl:out value="${actor.commercialName}" /></li>
+		<spring:message code="company.score" var="score" />
+		<li>
+		<b>${score}: </b>
+		<jstl:choose>
+			<jstl:when test="${actor.score != null}">
+				<jstl:out value="${actor.score}" />
+			</jstl:when>
+			<jstl:otherwise>
+			N/A
+			</jstl:otherwise>
+		</jstl:choose>
+		</li>
+	</jstl:if>
+	
+	<jstl:if test="${authority == 'PROVIDER'}">
+		<spring:message code="provider.make" var="make" />
+		<li><b>${make}:</b> <jstl:out value="${actor.make}" /></li>
 	</jstl:if>
 
 	<security:authorize access="hasRole('ADMIN')">

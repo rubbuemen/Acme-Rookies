@@ -37,7 +37,7 @@
 
 
 <p>Acme-Rookies (IN ADVANCE THE OWNER) with address for the
-	purposes of notifications in Seville with NIF BXXXXXXXX makeCreditCards available
+	purposes of notifications in Seville with NIF BXXXXXXXX make available
 	on its website www.acme.com certain contents of an informative nature
 	about its activities. These general conditions govern solely and
 	exclusively the use Of the website of THE OWNER by the USERS who access
@@ -75,7 +75,7 @@
 		not imply the obligation of registration of the USER. The conditions
 		of access and use of this website are strictly governed by the current
 		legality and by the principle of good faith committing the USER to
-		makeCreditCard a good use of the web. All acts that violate the legality, rights
+		make a good use of the web. All acts that violate the legality, rights
 		or interests of third parties are prohibited: privacy, data
 		protection, intellectual property, etc. The OWNER expressly forbids
 		the following:

@@ -33,4 +33,7 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 	@Query("select distinct c from Company c join c.positions p join p.applications a join a.curricula cu where cu.id = ?1")
 	Collection<Company> findCompaniesByCurriculaId(int curriculaId);
 
+	@Query("select distinct c from Company c join c.positions p where p in (select p from Audit a join a.position p where a.isFinalMode = 1)")
+	Collection<Company> findCompaniesWithAudits();
+
 }

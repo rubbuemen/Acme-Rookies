@@ -35,7 +35,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.2
+	 *         Requisito funcional: 9.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "Problems"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "Problems" correctamente
@@ -60,7 +60,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.2
+	 *         Requisito funcional: 9.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "Problem"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear un "Problem" correctamente
@@ -94,7 +94,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.2
+	 *         Requisito funcional: 9.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar un "Problem"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar un "Problem" correctamente
@@ -131,7 +131,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.2
+	 *         Requisito funcional: 9.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "Problem"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "Problem" correctamente
@@ -162,7 +162,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.2
+	 *         Requisito funcional: 9.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: cambiar a modo final un "Problem"
 	 *         Tests positivos: 1
 	 *         *** 1. Cambiar a modo final un "Problem" correctamente

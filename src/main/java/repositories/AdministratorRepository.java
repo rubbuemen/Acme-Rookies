@@ -18,8 +18,9 @@ import org.springframework.stereotype.Repository;
 
 import domain.Administrator;
 import domain.Company;
-import domain.Rookie;
 import domain.Position;
+import domain.Provider;
+import domain.Rookie;
 
 @Repository
 public interface AdministratorRepository extends JpaRepository<Administrator, Integer> {
@@ -53,4 +54,32 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 	@Query("select sum(case when f.positions.size = 0 then 1.0 else 0.0 end)/sum(case when f.positions.size > 0 then 1.0 else 0.0 end) from Finder f")
 	String dashboardQueryB3();
+
+	@Query("select avg(a.score), min(a.score), max(a.score), stddev(a.score) from Audit a")
+	String dashboardQueryAcmeRookiesC1();
+
+	@Query("select avg(c.score), min(c.score), max(c.score), stddev(c.score) from Company c")
+	String dashboardQueryAcmeRookiesC2();
+
+	@Query("select c from Company c where c.score is not null group by c order by max(c.score) desc")
+	Collection<Company> dashboardQueryAcmeRookiesC3();
+
+	@Query("select avg(p.salary) from Company c1 join c1.positions p where c1.score  = (select max(c2.score) from Company c2)")
+	String dashboardQueryAcmeRookiesC4();
+
+	@Query("select avg(p.items.size), min(p.items.size), max(p.items.size), stddev(p.items.size) from Provider p")
+	String dashboardQueryAcmeRookiesB1();
+
+	@Query("select p from Provider p join p.items i group by p order by sum(i) desc")
+	Collection<Provider> dashboardQueryAcmeRookiesB2();
+
+	@Query("select avg(p.sponsorships.size), min(p.sponsorships.size), max(p.sponsorships.size), stddev(p.sponsorships.size) from Provider p")
+	String dashboardQueryAcmeRookiesA1();
+
+	@Query("select avg(p.sponsorships.size), min(p.sponsorships.size), max(p.sponsorships.size), stddev(p.sponsorships.size) from Position p")
+	String dashboardQueryAcmeRookiesA2();
+
+	@Query("select p1 from Provider p1 where (select count(s) from Sponsorship s join s.provider p where p in (select p2 from Provider p2 where p1.id = p2.id )) >= 1.1*(select avg(1.0*(select count(s) from Sponsorship s join s.provider p where p in (select p2 from Provider p2 where p1.id = p2.id ))) from Provider p1)")
+	Collection<Provider> dashboardQueryAcmeRookiesA3();
+
 }

@@ -20,11 +20,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AdministratorService;
+import services.AuditorService;
 import services.UserAccountService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Administrator;
+import domain.Auditor;
 import forms.AdministratorForm;
+import forms.AuditorForm;
 
 @Controller
 @RequestMapping("/actor/administrator")
@@ -38,6 +41,9 @@ public class AdministratorActorController extends AbstractController {
 
 	@Autowired
 	UserAccountService		userAccountService;
+
+	@Autowired
+	AuditorService			auditorService;
 
 
 	@RequestMapping(value = "/register-administrator", method = RequestMethod.GET)
@@ -70,6 +76,57 @@ public class AdministratorActorController extends AbstractController {
 				Assert.isTrue(actorForm.getActor().getUserAccount().getPassword().equals(actorForm.getPasswordCheck()), "Password does not match");
 				Assert.isTrue(actorForm.getTermsConditions(), "The terms and conditions must be accepted");
 				this.administratorService.save(actorForm.getActor());
+				result = new ModelAndView("redirect:/welcome/index.do");
+			} catch (final Throwable oops) {
+				if (oops.getMessage().equals("Password does not match"))
+					result = this.createEditModelAndView(actorForm.getActor(), "actor.password.match");
+				else if (oops.getMessage().equals("The terms and conditions must be accepted"))
+					result = this.createEditModelAndView(actorForm.getActor(), "actor.conditions.accept");
+				else if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]" + "; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
+					result = this.createEditModelAndView(actorForm.getActor(), "actor.error.duplicate.user");
+				else if (oops.getMessage().equals("Invalid credit card"))
+					result = this.createEditModelAndView(actorForm.getActor(), "creditCard.error.invalid");
+				else if (oops.getMessage().equals("Expired credit card"))
+					result = this.createEditModelAndView(actorForm.getActor(), "creditCard.error.expired");
+				else if (oops.getMessage().equals("This entity does not exist"))
+					result = this.createEditModelAndView(null, "hacking.notExist.error");
+				else
+					result = this.createEditModelAndView(actorForm.getActor(), "commit.error");
+			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/register-auditor", method = RequestMethod.GET)
+	public ModelAndView registerAuditor() {
+		ModelAndView result;
+		Auditor actor;
+
+		actor = this.auditorService.create();
+
+		final AuditorForm actorForm = new AuditorForm(actor);
+
+		result = new ModelAndView("actor/register");
+
+		result.addObject("actionURL", "actor/administrator/register-auditor.do");
+		result.addObject("actorForm", actorForm);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/register-auditor", method = RequestMethod.POST, params = "save")
+	public ModelAndView registerAuditor(@ModelAttribute("actorForm") AuditorForm actorForm, final BindingResult binding) {
+		ModelAndView result;
+
+		actorForm = this.auditorService.reconstruct(actorForm, binding);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(actorForm.getActor());
+		else
+			try {
+				Assert.isTrue(actorForm.getActor().getUserAccount().getPassword().equals(actorForm.getPasswordCheck()), "Password does not match");
+				Assert.isTrue(actorForm.getTermsConditions(), "The terms and conditions must be accepted");
+				this.auditorService.save(actorForm.getActor());
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
 				if (oops.getMessage().equals("Password does not match"))

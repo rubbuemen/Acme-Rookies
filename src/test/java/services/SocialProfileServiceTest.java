@@ -44,7 +44,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.1
+	 *         Requisito funcional: 23.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "SocialProfiles"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "SocialProfiles" correctamente
@@ -69,7 +69,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.1
+	 *         Requisito funcional: 23.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "SocialProfile"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear un "SocialProfile" correctamente
@@ -106,7 +106,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.1
+	 *         Requisito funcional: 23.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar un "SocialProfile"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar un "SocialProfile" correctamente
@@ -143,7 +143,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.1
+	 *         Requisito funcional: 23.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "SocialProfile"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "SocialProfile" correctamente

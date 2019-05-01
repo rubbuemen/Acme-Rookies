@@ -42,7 +42,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 7.3
+	 *         Requisito funcional: 7.3 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar las "Companies" disponibles sin estar logeado y navegar hacia sus "Positions"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar las "Companies" disponibles sin estar logeado y navegar hacia sus "Positions"
@@ -68,7 +68,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 7.4
+	 *         Requisito funcional: 7.4 (Acme-Hacker-Rank)
 	 *         Caso de uso: buscar "Positions" usando una palabra clave sin estar logeado
 	 *         Tests positivos: 1
 	 *         *** 1. Buscar "Positions" usando una palabra clave sin estar logeado, correctamente
@@ -90,7 +90,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.1
+	 *         Requisito funcional: 9.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "Positions"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "Positions" correctamente
@@ -115,7 +115,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.1
+	 *         Requisito funcional: 9.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "Position"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear un "Position" correctamente
@@ -189,7 +189,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.1
+	 *         Requisito funcional: 9.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: editar un "Position"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar un "Position" correctamente
@@ -266,7 +266,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.1
+	 *         Requisito funcional: 9.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "Position"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "Position" correctamente
@@ -297,7 +297,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.1
+	 *         Requisito funcional: 9.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: cambiar a modo final un "Position"
 	 *         Tests positivos: 1
 	 *         *** 1. Cambiar a modo final un "Position" correctamente
@@ -331,7 +331,7 @@ public class PositionServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 9.1
+	 *         Requisito funcional: 9.1 (Acme-Hacker-Rank)
 	 *         Caso de uso: cancelar un "Position"
 	 *         Tests positivos: 1
 	 *         *** 1. Cancelar un "Position" correctamente

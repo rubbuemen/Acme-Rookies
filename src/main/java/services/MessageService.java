@@ -58,12 +58,14 @@ public class MessageService {
 		Message result;
 
 		result = new Message();
+		final Collection<String> tags = new HashSet<>();
 		final Collection<Actor> recipients = new HashSet<>();
 		final Date moment = new Date(System.currentTimeMillis() - 1);
 
 		result.setRecipients(recipients);
 		result.setMoment(moment);
 		result.setFlagSpam(false);
+		result.setTags(tags);
 
 		return result;
 	}
@@ -114,6 +116,32 @@ public class MessageService {
 
 		for (final Actor recipient : message.getRecipients()) {
 			final Message copyMessage = this.create();
+			copyMessage.setMoment(message.getMoment());
+			copyMessage.setBody(message.getBody());
+			copyMessage.setSubject(message.getSubject());
+			copyMessage.setTags(message.getTags());
+			copyMessage.setFlagSpam(message.getFlagSpam());
+			copyMessage.setSender(message.getSender());
+			copyMessage.setRecipients(message.getRecipients());
+			result = this.messageRepository.save(copyMessage);
+			recipient.getMessages().add(result);
+		}
+	}
+
+	public void saveAuxiliar(final Message message) {
+		Assert.notNull(message);
+		Assert.isTrue(message.getId() == 0); //Un mensaje no tiene sentido que se edite, por lo que sólo vendrá del create
+
+		Message result;
+
+		final Date moment = new Date(System.currentTimeMillis() - 1);
+		message.setMoment(moment);
+
+		final String controlTag = "SYSTEM";
+		message.getTags().add(controlTag);
+
+		for (final Actor recipient : message.getRecipients()) {
+			final Message copyMessage = this.createAuxiliar();
 			copyMessage.setMoment(message.getMoment());
 			copyMessage.setBody(message.getBody());
 			copyMessage.setSubject(message.getSubject());

@@ -21,8 +21,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" class="displaytag" name="companies"
-	requestURI="${requestURI}" id="row">
+<display:table pagesize="5" class="displaytag" name="providers"	requestURI="${requestURI}" id="row">
 
 	<spring:message code="actor.name" var="name" />
 	<display:column property="name" title="${name}" />
@@ -47,12 +46,12 @@
 	<spring:message code="actor.address" var="address" />
 	<display:column property="address" title="${address}" />
 	
-	<spring:message code="company.commercialName" var="commercialName" />
-	<display:column property="commercialName" title="${commercialName}" />
+	<spring:message code="provider.make" var="make" />
+	<display:column property="make" title="${make}" />
 	
-	<spring:message code="company.positions" var="positions" />
-	<display:column title="${positions}">
-		<acme:button url="position/listGeneric.do?companyId=${row.id}" code="button.show" />
+	<spring:message code="provider.items" var="items" />
+	<display:column title="${items}">
+		<acme:button url="item/listGeneric.do?providerId=${row.id}" code="button.show" />
 	</display:column>
 
 </display:table>

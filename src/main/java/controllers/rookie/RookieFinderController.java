@@ -9,6 +9,10 @@
 
 package controllers.rookie;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,18 +22,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.FinderService;
 import services.PositionService;
+import services.SponsorshipService;
 import controllers.AbstractController;
 import domain.Finder;
+import domain.Position;
+import domain.Sponsorship;
 
 @Controller
 @RequestMapping("/finder/rookie")
 public class RookieFinderController extends AbstractController {
 
 	@Autowired
-	PositionService	positionService;
+	PositionService		positionService;
 
 	@Autowired
-	FinderService	finderService;
+	FinderService		finderService;
+
+	@Autowired
+	SponsorshipService	sponsorshipService;
 
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
@@ -106,7 +116,17 @@ public class RookieFinderController extends AbstractController {
 			result = new ModelAndView("redirect:/welcome/index.do");
 		else {
 			result = new ModelAndView("finder/edit");
-			result.addObject("positions", finder.getPositions());
+			final Collection<Position> positions = finder.getPositions();
+			result.addObject("positions", positions);
+			if (positions == null || !positions.isEmpty()) {
+				final Map<Position, Sponsorship> randomSponsorship = new HashMap<>();
+				for (final Position p : positions) {
+					final Sponsorship sponsorship = this.sponsorshipService.findRandomSponsorship(p.getId());
+					if (sponsorship != null)
+						randomSponsorship.put(p, sponsorship);
+				}
+				result.addObject("randomSponsorship", randomSponsorship);
+			}
 		}
 
 		result.addObject("finder", finder);

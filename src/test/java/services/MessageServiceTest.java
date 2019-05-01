@@ -28,8 +28,8 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Actor;
 import domain.Company;
-import domain.Rookie;
 import domain.Message;
+import domain.Rookie;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -51,7 +51,7 @@ public class MessageServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.2
+	 *         Requisito funcional: 23.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: listar "Messages"
 	 *         Tests positivos: 1
 	 *         *** 1. Listar "Messages" correctamente
@@ -76,7 +76,7 @@ public class MessageServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.2
+	 *         Requisito funcional: 23.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: crear un "Message"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear un "Message" correctamente
@@ -109,7 +109,7 @@ public class MessageServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.2
+	 *         Requisito funcional: 23.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: eliminar un "Message"
 	 *         Tests positivos: 1
 	 *         *** 1. Eliminar un "Message" correctamente
@@ -137,7 +137,7 @@ public class MessageServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 23.2
+	 *         Requisito funcional: 23.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: broadcast un "Message"
 	 *         Tests positivos: 1
 	 *         *** 1. Crear un "Message" correctamente

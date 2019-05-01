@@ -24,5 +24,10 @@
 		<put-attribute name="title" value="Items list" />
 		<put-attribute name="body" value="/views/item/list.jsp" />
 	</definition>
+	
+	<definition name="item/listGeneric" extends="master.page">
+		<put-attribute name="title" value="Items list" />
+		<put-attribute name="body" value="/views/item/listGeneric.jsp" />
+	</definition>
 
 </tiles-definitions>
