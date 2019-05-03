@@ -180,6 +180,10 @@ public class SystemConfigurationService {
 		Assert.notNull(actorLogged);
 		this.actorService.checkUserLoginAdministrator(actorLogged);
 
+		final SystemConfiguration systemConfiguration = this.systemConfigurationRepository.getConfiguration();
+
+		Assert.isTrue(!systemConfiguration.getIsNotifiedRebrand(), "The notify rebranding process only can be runned once");
+
 		final Message result = this.messageService.create();
 		result.setSubject("Rebranding in the system");
 		result.setBody("Dear user, you are notified that there has been a change of brand in the system so that you are informed of it.");
@@ -191,11 +195,9 @@ public class SystemConfigurationService {
 			result.getRecipients().add(system);
 		}
 		this.messageService.save(result, true);
-		final SystemConfiguration systemConfiguration = this.systemConfigurationRepository.getConfiguration();
 		systemConfiguration.setIsNotifiedRebrand(true);
 		this.systemConfigurationRepository.save(systemConfiguration);
 	}
-
 	// R4.3 (Acme-Rookies)
 	public Map<Company, Double> mapCompanyScore() {
 		final Map<Company, Double> result = new HashMap<>();

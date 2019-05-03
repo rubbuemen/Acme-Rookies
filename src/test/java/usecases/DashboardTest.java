@@ -69,11 +69,11 @@ public class DashboardTest extends AbstractTest {
 		final Object testingData[][] = {
 			{
 				"admin", "1.2,0,3,1.1662", "1.4,0,4,1.4967", "company1,company2,company3", "rookie1,rookie2,rookie3", "482.41333333333336,142.62,800.38,251.05168462998924", "position5", "position3", "0.8,0,2,0.74833", "1.0,0,2,0.8944", "0.66667",
-				"5.2,1,10,3.1241", "0.5,0.0,1.0,0.5", "company1,company2", "247.9266666666667", "0.6,0,2,0.8", "provider1,provider2", "1.0,0,2,0.8944", "0.8333,0,3,1.2134", "provider1,provider3", null
+				"3.333333333,1.0,6.0,2.054804668", "0.5,0.0,1.0,0.5", "company1,company2", "247.9266666666667", "0.6,0,2,0.8", "provider1,provider2", "1.0,0,2,0.8944", "0.8333,0,3,1.2134", "provider1,provider3", null
 			},
 			{
 				"company1", "1.2,0,3,1.1662", "1.4,0,4,1.4967", "company1,company2,company3", "rookie1,rookie2,rookie3", "482.41333333333336,142.62,800.38,251.05168462998924", "position5", "position3", "0.8,0,2,0.74833", "1.0,0,2,0.8944", "0.66667",
-				"5.2,1,10,3.1241", "0.5,0.0,1.0,0.5", "company1,company2", "247.9266666666667", "0.6,0,2,0.8", "provider1,provider2", "1.0,0,2,0.8944", "0.8333,0,3,1.2134", "provider1,provider3", IllegalArgumentException.class
+				"3.333333333,1.0,6.0,2.054804668", "0.5,0.0,1.0,0.5", "company1,company2", "247.9266666666667", "0.6,0,2,0.8", "provider1,provider2", "1.0,0,2,0.8944", "0.8333,0,3,1.2134", "provider1,provider3", IllegalArgumentException.class
 			}
 		};
 

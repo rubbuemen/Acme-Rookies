@@ -243,6 +243,7 @@ public class CompanyServiceTest extends AbstractTest {
 			this.editDataTemplate((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
 				(String) testingData[i][7], (Integer) testingData[i][8], (Integer) testingData[i][9], (Integer) testingData[i][10], (String) testingData[i][11], (String) testingData[i][12], (Class<?>) testingData[i][13]);
 	}
+
 	/**
 	 * @author Rubén Bueno
 	 *         Requisito funcional: 7.2 (Acme-Hacker-Rank)

@@ -55,7 +55,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select sum(case when f.positions.size = 0 then 1.0 else 0.0 end)/sum(case when f.positions.size > 0 then 1.0 else 0.0 end) from Finder f")
 	String dashboardQueryB3();
 
-	@Query("select avg(a.score), min(a.score), max(a.score), stddev(a.score) from Audit a")
+	@Query("select avg(1.0*(select avg(a.score) from Audit a where a.position.id = p.id and a.isFinalMode = 1)), min(1.0*(select avg(a.score) from Audit a where a.position.id = p.id and a.isFinalMode = 1)), max(1.0*(select avg(a.score) from Audit a where a.position.id = p.id and a.isFinalMode = 1)), stddev(1.0*(select avg(a.score) from Audit a where a.position.id = p.id and a.isFinalMode = 1)) from Position p")
 	String dashboardQueryAcmeRookiesC1();
 
 	@Query("select avg(c.score), min(c.score), max(c.score), stddev(c.score) from Company c")

@@ -167,7 +167,10 @@ public class AdministratorSystemConfigurationController extends AbstractControll
 		} catch (final Throwable oops) {
 			result = new ModelAndView("systemConfiguration/show");
 			result.addObject("systemConfiguration", systemConfiguration);
-			result.addObject("message", "commit.error");
+			if (oops.getMessage().equals("The notify rebranding process only can be runned once"))
+				result.addObject("message", "systemConfigurationRebranding.error.once");
+			else
+				result.addObject("message", "commit.error");
 		}
 
 		return result;

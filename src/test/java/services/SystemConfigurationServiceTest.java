@@ -51,7 +51,7 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 	 *         Caso de uso: editar un "SystemConfiguration"
 	 *         Tests positivos: 1
 	 *         *** 1. Editar de un "SystemConfiguration" correctamente
-	 *         Tests negativos: 15
+	 *         Tests negativos: 20
 	 *         *** 1. Intento de edición de "SystemConfiguration" con una autoridad no permitida
 	 *         *** 2. Intento de edición de "SystemConfiguration" con nombre vacío
 	 *         *** 3. Intento de edición de "SystemConfiguration" con url de banner vacío
@@ -67,6 +67,11 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 	 *         *** 13. Intento de edición de "SystemConfiguration" con máximo resultados del finder menor a 1
 	 *         *** 14. Intento de edición de "SystemConfiguration" con máximo resultados del finder mayor a 100
 	 *         *** 15. Intento de edición de "SystemConfiguration" con palabras de spam vacío
+	 *         *** 16. Intento de edición de "SystemConfiguration" con tarifa nula
+	 *         *** 17. Intento de edición de "SystemConfiguration" con tarifa menor a 0
+	 *         *** 18. Intento de edición de "SystemConfiguration" con porcentaje de IVA nulo
+	 *         *** 19. Intento de edición de "SystemConfiguration" con porcentaje de IVA menor a 0
+	 *         *** 20. Intento de edición de "SystemConfiguration" con porcentaje de IVA mayor a 100
 	 *         Analisis de cobertura de sentencias: 100% 20/20 instrucciones
 	 *         Analisis de cobertura de datos: alto
 	 */
@@ -78,48 +83,58 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 
 		final Object testingData[][] = {
 			{
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, null
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 21.24, null
 			}, {
-				"rookie1", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, IllegalArgumentException.class
+				"rookie1", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 21.24, IllegalArgumentException.class
 			}, {
-				"admin", "", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "test", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "test", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "", "testWelcomeMessageES", "+34", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "", "+34", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "", "+34", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "test", 4, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "test", 4, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", null, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", null, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 0, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 0, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 25, 5, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 25, 5, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, null, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, null, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 0, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 0, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 101, stringValues, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 101, stringValues, 20.12, 21.24, ConstraintViolationException.class
 			}, {
-				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, emptyCollection, ConstraintViolationException.class
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, emptyCollection, 20.12, 21.24, ConstraintViolationException.class
+			}, {
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, null, 21.24, ConstraintViolationException.class
+			}, {
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, -1.0, 21.24, ConstraintViolationException.class
+			}, {
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, null, ConstraintViolationException.class
+			}, {
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, -1.0, ConstraintViolationException.class
+			}, {
+				"admin", "testName", "http://www.testBannerUrl.com", "testWelcomeMessageEN", "testWelcomeMessageES", "+34", 4, 5, stringValues, 20.12, 101.0, ConstraintViolationException.class
 			}
 		};
 
 		for (int i = 0; i < testingData.length; i++)
 			this.editSystemConfigurationTemplate((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Integer) testingData[i][6],
-				(Integer) testingData[i][7], (Collection<String>) testingData[i][8], (Class<?>) testingData[i][9]);
+				(Integer) testingData[i][7], (Collection<String>) testingData[i][8], (Double) testingData[i][9], (Double) testingData[i][10], (Class<?>) testingData[i][11]);
 	}
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 24.2
+	 *         Requisito funcional: 24.2 (Acme-Hacker-Rank)
 	 *         Caso de uso: marcar "Actors" como spammers lanzando un proceso
 	 *         Tests positivos: 1
 	 *         *** 1. Marcar "Actors" como spammers correctamente
@@ -144,7 +159,7 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 24.3 (Acme-Madrugá)
+	 *         Requisito funcional: 24.3 (Acme-Hacker-Rank))
 	 *         Caso de uso: banear un "Actor"
 	 *         Tests positivos: 1
 	 *         *** 1. Banear un "Actor" correctamente
@@ -169,7 +184,7 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 
 	/**
 	 * @author Rubén Bueno
-	 *         Requisito funcional: 24.4
+	 *         Requisito funcional: 24.4 (Acme-Hacker-Rank)
 	 *         Caso de uso: desbanear un "Actor"
 	 *         Tests positivos: 1
 	 *         *** 1. Desbanear un "Actor" correctamente
@@ -192,10 +207,63 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 			this.unbanActorTemplate((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
 	}
 
+	/**
+	 * @author Rubén Bueno
+	 *         Requisito funcional: 4.1 (Acme-Rookies)
+	 *         Caso de uso: avisar de un cambio de marca a los "Actors" lanzando un procedimiento una única vez
+	 *         Tests positivos: 1
+	 *         *** 1. Avisar del cambio de marca a los "Actors" correctamente
+	 *         Tests negativos: 2
+	 *         *** 1. Intento de aviso del cambio de marca a los "Actors" con una autoridad no permitida
+	 *         *** 2. Intento de aviso del cambio de marca a los "Actors" lanzando de nuevo el procedimiento
+	 *         Analisis de cobertura de sentencias: 87,7% 64/73 instrucciones
+	 *         Analisis de cobertura de datos: alto
+	 */
+	@Test
+	public void driverNotifyRebrandingProcess() {
+		final Object testingData[][] = {
+			{
+				"admin", false, null
+			}, {
+				"rookie1", false, IllegalArgumentException.class
+			}, {
+				"admin", true, IllegalArgumentException.class
+			}
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.notifyRebrandingProcessTemplate((String) testingData[i][0], (Boolean) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
+	/**
+	 * @author Rubén Bueno
+	 *         Requisito funcional: 4.3 (Acme-Rookies)
+	 *         Caso de uso: calcular la puntuación de auditorías de las "Companies" lanzando un proceso
+	 *         Tests positivos: 1
+	 *         *** 1. Calcular la puntuación de auditorías de las "Companies" correctamente
+	 *         Tests negativos: 1
+	 *         *** 1. Intento de cálculo de la puntuación de auditorías de las "Companies" con una autoridad no permitida
+	 *         Analisis de cobertura de sentencias: 100% 34/34 instrucciones
+	 *         Analisis de cobertura de datos: alto
+	 */
+	@Test
+	public void driverComputeAuditScoreProcess() {
+		final Object testingData[][] = {
+			{
+				"admin", null
+			}, {
+				"rookie1", IllegalArgumentException.class
+			}
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.computeAuditScoreTemplate((String) testingData[i][0], (Class<?>) testingData[i][1]);
+	}
+
 	// Template methods ------------------------------------------------------
 
 	protected void editSystemConfigurationTemplate(final String username, final String nameSystem, final String bannerUrl, final String welcomeMessageEnglish, final String welcomeMessageSpanish, final String phoneCountryCode, final Integer periodFinder,
-		final Integer maxResultsFinder, final Collection<String> spamWords, final Class<?> expected) {
+		final Integer maxResultsFinder, final Collection<String> spamWords, final Double fare, final Double VATPercentage, final Class<?> expected) {
 		Class<?> caught = null;
 		SystemConfiguration systemConfiguration;
 
@@ -212,6 +280,8 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 			systemConfiguration.setPeriodFinder(periodFinder);
 			systemConfiguration.setMaxResultsFinder(maxResultsFinder);
 			systemConfiguration.setSpamWords(spamWords);
+			systemConfiguration.setFare(fare);
+			systemConfiguration.setVATPercentage(VATPercentage);
 			this.systemConfigurationService.save(systemConfiguration);
 			this.systemConfigurationService.flush();
 		} catch (final Throwable oops) {
@@ -268,6 +338,45 @@ public class SystemConfigurationServiceTest extends AbstractTest {
 		try {
 			super.authenticate(username);
 			this.actorService.unbanActor(this.actorService.findOne(super.getEntityId(actor)));
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+		super.unauthenticate();
+		super.rollbackTransaction();
+	}
+
+	protected void notifyRebrandingProcessTemplate(final String username, final Boolean control, final Class<?> expected) {
+		Class<?> caught = null;
+
+		super.startTransaction();
+
+		try {
+			super.authenticate(username);
+			final SystemConfiguration systemConfiguration = this.systemConfigurationService.getConfiguration();
+			systemConfiguration.setIsNotifiedRebrand(control);
+			this.systemConfigurationService.save(systemConfiguration);
+			this.systemConfigurationService.notifyRebranding();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+			this.entityManager.clear();
+		}
+
+		this.checkExceptions(expected, caught);
+		super.unauthenticate();
+		super.rollbackTransaction();
+	}
+
+	protected void computeAuditScoreTemplate(final String username, final Class<?> expected) {
+		Class<?> caught = null;
+
+		super.startTransaction();
+
+		try {
+			super.authenticate(username);
+			this.systemConfigurationService.computeScore();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 			this.entityManager.clear();
