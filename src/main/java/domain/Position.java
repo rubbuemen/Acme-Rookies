@@ -171,7 +171,8 @@ public class Position extends DomainEntity {
 
 	@Valid
 	@EachNotNull
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	public Collection<Problem> getProblems() {
 		return this.problems;
 	}
