@@ -6,9 +6,12 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
@@ -62,7 +65,8 @@ public class Company extends Actor {
 
 	@Valid
 	@EachNotNull
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	public Collection<Problem> getProblems() {
 		return this.problems;
 	}
