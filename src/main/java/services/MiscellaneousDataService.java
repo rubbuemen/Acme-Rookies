@@ -13,8 +13,8 @@ import org.springframework.validation.Validator;
 import repositories.MiscellaneousDataRepository;
 import domain.Actor;
 import domain.Curricula;
-import domain.Rookie;
 import domain.MiscellaneousData;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -158,10 +158,9 @@ public class MiscellaneousDataService {
 		if (miscellaneousData.getId() == 0)
 			result = miscellaneousData;
 		else {
-			result = this.miscellaneousDataRepository.findOne(miscellaneousData.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setText(miscellaneousData.getText());
-			result.setAttachments(miscellaneousData.getAttachments());
+			final MiscellaneousData originalMiscellaneousData = this.miscellaneousDataRepository.findOne(miscellaneousData.getId());
+			Assert.notNull(originalMiscellaneousData, "This entity does not exist");
+			result = miscellaneousData;
 		}
 
 		this.validator.validate(result, binding);

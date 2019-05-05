@@ -14,8 +14,8 @@ import org.springframework.validation.Validator;
 import repositories.PositionDataRepository;
 import domain.Actor;
 import domain.Curricula;
-import domain.Rookie;
 import domain.PositionData;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -164,12 +164,9 @@ public class PositionDataService {
 		if (positionData.getId() == 0)
 			result = positionData;
 		else {
-			result = this.positionDataRepository.findOne(positionData.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setTitle(positionData.getTitle());
-			result.setDescription(positionData.getDescription());
-			result.setStartDate(positionData.getStartDate());
-			result.setEndDate(positionData.getEndDate());
+			final PositionData originalPositionData = this.positionDataRepository.findOne(positionData.getId());
+			Assert.notNull(originalPositionData, "This entity does not exist");
+			result = positionData;
 		}
 
 		this.validator.validate(result, binding);

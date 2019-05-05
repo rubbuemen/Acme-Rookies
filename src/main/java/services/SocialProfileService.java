@@ -138,16 +138,16 @@ public class SocialProfileService {
 	public SocialProfile reconstruct(final SocialProfile socialProfile, final BindingResult binding) {
 		SocialProfile result;
 
+		final Actor actorLogged = this.actorService.findActorLogged();
+
 		if (socialProfile.getId() == 0) {
-			final Actor actorLogged = this.actorService.findActorLogged();
 			result = socialProfile;
 			result.setActor(actorLogged);
 		} else {
-			result = this.socialProfileRepository.findOne(socialProfile.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setNick(socialProfile.getNick());
-			result.setSocialNetworkName(socialProfile.getSocialNetworkName());
-			result.setProfileLink(socialProfile.getProfileLink());
+			final SocialProfile originalSocialProfile = this.socialProfileRepository.findOne(socialProfile.getId());
+			Assert.notNull(originalSocialProfile, "This entity does not exist");
+			result = socialProfile;
+			result.setActor(actorLogged);
 		}
 
 		this.validator.validate(result, binding);

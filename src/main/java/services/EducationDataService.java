@@ -165,13 +165,9 @@ public class EducationDataService {
 		if (educationData.getId() == 0)
 			result = educationData;
 		else {
-			result = this.educationDataRepository.findOne(educationData.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setDegree(educationData.getDegree());
-			result.setInstitution(educationData.getInstitution());
-			result.setMark(educationData.getMark());
-			result.setStartDate(educationData.getStartDate());
-			result.setEndDate(educationData.getEndDate());
+			final EducationData originalEducationData = this.educationDataRepository.findOne(educationData.getId());
+			Assert.notNull(originalEducationData, "This entity does not exist");
+			result = educationData;
 		}
 
 		this.validator.validate(result, binding);

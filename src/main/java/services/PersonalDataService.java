@@ -13,8 +13,8 @@ import org.springframework.validation.Validator;
 import repositories.PersonalDataRepository;
 import domain.Actor;
 import domain.Curricula;
-import domain.Rookie;
 import domain.PersonalData;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -133,13 +133,9 @@ public class PersonalDataService {
 		PersonalData result;
 
 		//No se estará creando desde aquí, unicamente se editará
-		result = this.personalDataRepository.findOne(personalData.getId());
-		Assert.notNull(result, "This entity does not exist");
-		result.setName(personalData.getName());
-		result.setStatement(personalData.getStatement());
-		result.setPhoneNumber(personalData.getPhoneNumber());
-		result.setGitHubProfile(personalData.getGitHubProfile());
-		result.setLinkedInProfile(personalData.getLinkedInProfile());
+		final PersonalData originalPersonalData = this.personalDataRepository.findOne(personalData.getId());
+		Assert.notNull(originalPersonalData, "This entity does not exist");
+		result = personalData;
 
 		this.validator.validate(result, binding);
 

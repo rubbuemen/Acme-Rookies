@@ -541,16 +541,13 @@ public class PositionService {
 		}
 
 		else {
-			result = this.positionRepository.findOne(position.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setTitle(position.getTitle());
-			result.setDescription(position.getDescription());
-			result.setDeadline(position.getDeadline());
-			result.setSkills(position.getSkills());
-			result.setTechnologies(position.getTechnologies());
-			result.setSalary(position.getSalary());
-			result.setProfile(position.getProfile());
-			result.setProblems(position.getProblems());
+			final Position originalPosition = this.positionRepository.findOne(position.getId());
+			Assert.notNull(originalPosition, "This entity does not exist");
+			result = position;
+			result.setTicker(originalPosition.getTicker());
+			result.setApplications(originalPosition.getApplications());
+			result.setIsFinalMode(originalPosition.getIsFinalMode());
+			result.setIsCancelled(originalPosition.getIsCancelled());
 		}
 
 		this.validator.validate(result, binding);

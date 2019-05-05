@@ -203,12 +203,9 @@ public class ItemService {
 		if (item.getId() == 0)
 			result = item;
 		else {
-			result = this.itemRepository.findOne(item.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setName(item.getName());
-			result.setDescription(item.getDescription());
-			result.setLink(item.getLink());
-			result.setPicture(item.getPicture());
+			final Item originalItem = this.itemRepository.findOne(item.getId());
+			Assert.notNull(originalItem, "This entity does not exist");
+			result = item;
 		}
 
 		this.validator.validate(result, binding);

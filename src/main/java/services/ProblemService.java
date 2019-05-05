@@ -14,9 +14,9 @@ import org.springframework.validation.Validator;
 import repositories.ProblemRepository;
 import domain.Actor;
 import domain.Company;
-import domain.Rookie;
 import domain.Position;
 import domain.Problem;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -254,11 +254,10 @@ public class ProblemService {
 			problem.setIsFinalMode(false);
 			result = problem;
 		} else {
-			result = this.problemRepository.findOne(problem.getId());
-			Assert.notNull(result, "This entity does not exist");
-			result.setTitle(problem.getTitle());
-			result.setStatement(problem.getStatement());
-			result.setAttachments(problem.getAttachments());
+			final Problem originalProblem = this.problemRepository.findOne(problem.getId());
+			Assert.notNull(originalProblem, "This entity does not exist");
+			result = problem;
+			result.setIsFinalMode(originalProblem.getIsFinalMode());
 		}
 
 		this.validator.validate(result, binding);

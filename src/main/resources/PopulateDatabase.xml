@@ -436,6 +436,11 @@
 		<property name="address" value="41005 Sevilla" />
 		<property name="commercialName" value="IBM" />
 		<property name="userAccount" ref="userAccount8" />
+		<property name="problems">
+			<list>
+				<ref bean="problem12" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- Rookie -->
@@ -585,6 +590,11 @@
 		<property name="phoneNumber" value="663366632" />
 		<property name="address" value="41005 Sevilla" />
 		<property name="userAccount" ref="userAccount18" />
+		<property name="audits">
+			<list>
+				<ref bean="audit6" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- Audits -->
@@ -620,6 +630,13 @@
 		<property name="moment" value="2019/03/22 12:42" />
 		<property name="text" value="Fantastic" />
 		<property name="score" value="10" />
+		<property name="isFinalMode" value="false" />
+		<property name="position" ref="position4" />
+	</bean>
+	<bean id="audit6" class="domain.Audit">
+		<property name="moment" value="2019/03/22 12:42" />
+		<property name="text" value="I love it" />
+		<property name="score" value="7" />
 		<property name="isFinalMode" value="false" />
 		<property name="position" ref="position4" />
 	</bean>
@@ -1144,7 +1161,7 @@
 
 	<!-- MiscellaneousData -->
 	<bean id="miscellaneousData1" class="domain.MiscellaneousData">
-		<property name="text" value="Sample text" />
+		<property name="text" value="Sample text 1" />
 		<property name="attachments">
 			<list>
 				<value>http://www.attachment1.com</value>
@@ -1153,7 +1170,7 @@
 		</property>
 	</bean>
 	<bean id="miscellaneousData2" class="domain.MiscellaneousData">
-		<property name="text" value="Sample text" />
+		<property name="text" value="Sample text 2" />
 		<property name="attachments">
 			<list>
 				<value>http://www.attachment1.com</value>
@@ -1162,7 +1179,7 @@
 		</property>
 	</bean>
 	<bean id="miscellaneousData3" class="domain.MiscellaneousData">
-		<property name="text" value="Sample text" />
+		<property name="text" value="Sample text 1" />
 		<property name="attachments">
 			<list>
 				<value>http://www.attachment1.com</value>
@@ -1171,7 +1188,7 @@
 		</property>
 	</bean>
 	<bean id="miscellaneousData4" class="domain.MiscellaneousData">
-		<property name="text" value="Sample text" />
+		<property name="text" value="Sample text 2" />
 		<property name="attachments">
 			<list>
 				<value>http://www.attachment1.com</value>
@@ -1492,6 +1509,17 @@
 			</list>
 		</property>
 		<property name="isFinalMode" value="true" />
+	</bean>
+	<bean id="problem12" class="domain.Problem">
+		<property name="title" value="Error problem12" />
+		<property name="statement" value="Statement12" />
+		<property name="hint" value="Hint12" />
+		<property name="attachments">
+			<list>
+				<value>http://www.attachment1.com</value>
+			</list>
+		</property>
+		<property name="isFinalMode" value="false" />
 	</bean>
 
 	<!-- Application -->
